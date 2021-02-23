@@ -1,0 +1,9 @@
+[submodule "external/strf"]
+	path = external/strf
+	url = https://github.com/robhz786/strf
+[submodule "external/fmt"]
+	path = external/fmt
+	url = https://github.com/fmtlib/fmt
+[submodule "external/google-benchmark"]
+	path = external/google-benchmark
+	url = https://github.com/google/benchmark
