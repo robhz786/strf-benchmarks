@@ -1,0 +1,86 @@
+cmake_minimum_required (VERSION 3.11)
+
+project (
+  str-benchmarks
+  VERSION 0.14.0
+  LANGUAGES CXX)
+
+include(CMakePackageConfigHelpers)
+
+if ( NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/external/strf/CMakeLists.txt OR
+     NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/external/fmt/CMakeLists.txt  OR
+     NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/external/google-benchmark/CMakeLists.txt )
+
+   message(
+     SEND_ERROR
+     "Building benchmarks requires externals libraries.\n"
+     "Run 'git submodule update --init'"
+     )
+endif ()
+
+option(BENCHMARK_ENABLE_TESTING OFF)
+option(BENCHMARK_ENABLE_GTEST_TESTS OFF)
+
+add_subdirectory(external/google-benchmark google-benchmark)
+add_subdirectory(external/fmt fmt)
+add_subdirectory(external/strf strf)
+
+
+foreach(
+    x
+    to_char_ptr
+    to_string
+    input_float
+    input_int
+    tr_string
+)
+  # benchmarks that compare againts {fmt}
+
+  add_executable(bench-${x}-header-only  src/${x}.cpp)
+  target_link_libraries(
+    bench-${x}-header-only
+    strf-header-only
+    fmt::fmt-header-only
+    benchmark )
+  set_target_properties(
+    bench-${x}-header-only
+    PROPERTIES OUTPUT_NAME ${x}-header-only )
+  install(
+    TARGETS bench-${x}-header-only
+    DESTINATION "${STRF_INSTALL_SUBDIR}/$<CONFIG>/benchmarks" )
+
+  add_executable(bench-${x}-static-lib src/${x}.cpp)
+  target_link_libraries(bench-${x}-static-lib strf fmt::fmt benchmark)
+  set_target_properties(bench-${x}-static-lib PROPERTIES OUTPUT_NAME ${x}-static-lib)
+
+endforeach(x)
+
+
+foreach(
+    x
+    range
+    join
+    width_calculation
+    utf8_to_utf16
+    utf16_to_utf8
+    numpunct
+)
+
+  add_executable(bench-${x}-header-only  src/${x}.cpp)
+  target_link_libraries(
+    bench-${x}-header-only
+    strf-header-only
+    benchmark )
+  set_target_properties(
+    bench-${x}-header-only
+    PROPERTIES OUTPUT_NAME
+    ${x}-header-only )
+  install(
+    TARGETS bench-${x}-header-only
+    DESTINATION "${STRF_INSTALL_SUBDIR}/$<CONFIG>/benchmarks")
+
+  add_executable(bench-${x}-static-lib src/${x}.cpp)
+  target_link_libraries(bench-${x}-static-lib strf benchmark)
+  set_target_properties(bench-${x}-static-lib PROPERTIES OUTPUT_NAME ${x}-static-lib)
+
+endforeach(x)
