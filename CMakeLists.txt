@@ -2,7 +2,6 @@ cmake_minimum_required (VERSION 3.11)
 
 project (
   str-benchmarks
-  VERSION 0.14.0
   LANGUAGES CXX)
 
 include(CMakePackageConfigHelpers)
@@ -36,22 +35,22 @@ foreach(
 )
   # benchmarks that compare againts {fmt}
 
-  add_executable(bench-${x}-header-only  src/${x}.cpp)
+  add_executable(${x}-header-only  src/${x}.cpp)
   target_link_libraries(
-    bench-${x}-header-only
+    ${x}-header-only
     strf-header-only
     fmt::fmt-header-only
     benchmark )
   set_target_properties(
-    bench-${x}-header-only
+    ${x}-header-only
     PROPERTIES OUTPUT_NAME ${x}-header-only )
   install(
-    TARGETS bench-${x}-header-only
+    TARGETS ${x}-header-only
     DESTINATION "${STRF_INSTALL_SUBDIR}/$<CONFIG>/benchmarks" )
 
-  add_executable(bench-${x}-static-lib src/${x}.cpp)
-  target_link_libraries(bench-${x}-static-lib strf fmt::fmt benchmark)
-  set_target_properties(bench-${x}-static-lib PROPERTIES OUTPUT_NAME ${x}-static-lib)
+  add_executable(${x}-static-lib src/${x}.cpp)
+  target_link_libraries(${x}-static-lib strf fmt::fmt benchmark)
+  set_target_properties(${x}-static-lib PROPERTIES OUTPUT_NAME ${x}-static-lib)
 
 endforeach(x)
 
@@ -66,21 +65,21 @@ foreach(
     numpunct
 )
 
-  add_executable(bench-${x}-header-only  src/${x}.cpp)
+  add_executable(${x}-header-only  src/${x}.cpp)
   target_link_libraries(
-    bench-${x}-header-only
+    ${x}-header-only
     strf-header-only
     benchmark )
   set_target_properties(
-    bench-${x}-header-only
+    ${x}-header-only
     PROPERTIES OUTPUT_NAME
     ${x}-header-only )
   install(
-    TARGETS bench-${x}-header-only
+    TARGETS ${x}-header-only
     DESTINATION "${STRF_INSTALL_SUBDIR}/$<CONFIG>/benchmarks")
 
-  add_executable(bench-${x}-static-lib src/${x}.cpp)
-  target_link_libraries(bench-${x}-static-lib strf benchmark)
-  set_target_properties(bench-${x}-static-lib PROPERTIES OUTPUT_NAME ${x}-static-lib)
+  add_executable(${x}-static-lib src/${x}.cpp)
+  target_link_libraries(${x}-static-lib strf benchmark)
+  set_target_properties(${x}-static-lib PROPERTIES OUTPUT_NAME ${x}-static-lib)
 
 endforeach(x)
