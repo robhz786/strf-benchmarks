@@ -32,9 +32,9 @@
 #define STR(X) STR2(X)
 
 
-constexpr auto fast_width  = strf::fast_width();
-constexpr auto slow_u32len = strf::width_as_fast_u32len();
-constexpr auto fast_u32len = strf::width_as_u32len();
+constexpr auto fast_width  = strf::fast_width;
+constexpr auto slow_u32len = strf::width_as_fast_u32len;
+constexpr auto fast_u32len = strf::width_as_u32len;
 auto wfunc = [](char32_t ch) { return strf::width_t(ch == U'\u2E3A' ? 4 : ch == U'\u2014' ? 2 : 1); };
 const auto custom_calc = strf::make_width_calculator(wfunc);
 

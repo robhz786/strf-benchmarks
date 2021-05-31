@@ -38,18 +38,15 @@ foreach(
   add_executable(${x}-header-only  src/${x}.cpp)
   target_link_libraries(
     ${x}-header-only
-    strf-header-only
+    strf::strf-header-only
     fmt::fmt-header-only
     benchmark )
   set_target_properties(
     ${x}-header-only
     PROPERTIES OUTPUT_NAME ${x}-header-only )
-  install(
-    TARGETS ${x}-header-only
-    DESTINATION "${STRF_INSTALL_SUBDIR}/$<CONFIG>/benchmarks" )
 
   add_executable(${x}-static-lib src/${x}.cpp)
-  target_link_libraries(${x}-static-lib strf fmt::fmt benchmark)
+  target_link_libraries(${x}-static-lib strf::strf-static-lib fmt::fmt benchmark)
   set_target_properties(${x}-static-lib PROPERTIES OUTPUT_NAME ${x}-static-lib)
 
 endforeach(x)
@@ -68,18 +65,15 @@ foreach(
   add_executable(${x}-header-only  src/${x}.cpp)
   target_link_libraries(
     ${x}-header-only
-    strf-header-only
+    strf::strf-header-only
     benchmark )
   set_target_properties(
     ${x}-header-only
     PROPERTIES OUTPUT_NAME
     ${x}-header-only )
-  install(
-    TARGETS ${x}-header-only
-    DESTINATION "${STRF_INSTALL_SUBDIR}/$<CONFIG>/benchmarks")
 
   add_executable(${x}-static-lib src/${x}.cpp)
-  target_link_libraries(${x}-static-lib strf benchmark)
+  target_link_libraries(${x}-static-lib strf::strf-static-lib benchmark)
   set_target_properties(${x}-static-lib PROPERTIES OUTPUT_NAME ${x}-static-lib)
 
 endforeach(x)
