@@ -45,11 +45,11 @@
 
 int main(int argc, char** argv)
 {
-    BM(, strf::to(dest)(25));
-    BM(, strf::to(dest)(15, 25, 35, 45, 55));
-    BM(, strf::to(dest)(~0ull));
-    BM(, strf::to(dest)(~0ull, ~0ull>>1, ~0ull>>2, ~0ull>>3, ~0ull>>4));
-    BM(, strf::to(dest)(strf::dec(21).fill('*')<8, ' ', *strf::hex(221), ' ', +strf::dec(21)>10));
+    BM(, strf::to_range(dest)(25));
+    BM(, strf::to_range(dest)(15, 25, 35, 45, 55));
+    BM(, strf::to_range(dest)(~0ull));
+    BM(, strf::to_range(dest)(~0ull, ~0ull>>1, ~0ull>>2, ~0ull>>3, ~0ull>>4));
+    BM(, strf::to_range(dest)(strf::dec(21).fill('*')<8, ' ', *strf::hex(221), ' ', +strf::dec(21)>10));
 
     BM2(,  fmt::format_to(dest, FMT_COMPILE( "{}" ), 25)
         , "fmt::format_to(dest, FMT_COMPILE(\"{}\"), 25)");

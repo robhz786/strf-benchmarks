@@ -62,46 +62,35 @@
 //         benchmark::ClobberMemory();
 //     }
 // }
-constexpr auto to_string_rc = strf::to_string.reserve_calc();
-constexpr auto to_string_nr = strf::to_string.no_reserve();
+constexpr double pi = M_PI;
 
 int main(int argc, char** argv)
 {
     BM(, std::to_string(123456));
     BM(, std::to_string(0.123456));
 
-    BM(, to_string_rc(123456));
-    BM(, to_string_rc(0.123456));
-    BM(FIXTURE_STR, to_string_rc("Blah ", str, "!\n"));
-    BM(, to_string_rc("blah ", 123456, " blah ", 0x123456, " blah"));
-    BM(, to_string_rc("blah ", +strf::dec(123456), " blah ", *strf::hex(0x123456), " blah"));
-    BM(, to_string_rc("blah ", +strf::right(123456, 20, '_'), " blah ", *strf::hex(0x123456)<20, " blah"));
+    BM(,strf::to_string(123456));
+    BM(,strf::to_string(0.123456));
+    BM(FIXTURE_STR, strf::to_string("Blah ", str, "!\n"));
+    BM(, strf::to_string("blah ", 123456, " blah ", 0x123456, " blah"));
+    BM(, strf::to_string("blah ", +strf::dec(123456), " blah ", *strf::hex(0x123456), " blah"));
+    BM(, strf::to_string("blah ", +strf::right(123456, 20, '_'), " blah ", *strf::hex(0x123456)<20, " blah"));
+    BM(, strf::to_string(1.123e+5, ' ', pi, ' ', 1.11e-222));
+    BM(, strf::to_string(*strf::fixed(1.123e+5), ' ', +strf::fixed(pi, 8), ' ', strf::sci(1.11e-222)>30));
 
-    BM(,to_string_nr(123456));
-    BM(,to_string_nr(0.123456));
-    BM(FIXTURE_STR, to_string_nr("Blah ", str, "!\n"));
-    BM(, to_string_nr("blah ", 123456, " blah ", 0x123456, " blah"));
-    BM(, to_string_nr("blah ", +strf::dec(123456), " blah ", *strf::hex(0x123456), " blah"));
-    BM(, to_string_nr("blah ", +strf::right(123456, 20, '_'), " blah ", *strf::hex(0x123456)<20, " blah"));
-
-    BM(, to_string_rc.tr("{}", 123456));
-    BM(, to_string_rc.tr("{}", 0.123456));
-    BM(FIXTURE_STR, to_string_rc.tr("Blah {}!\n", str));
-    BM(, to_string_rc.tr("blah {} blah {} blah", 123456, 0x123456));
-    BM(, to_string_rc.tr("blah {} blah {} blah", +strf::dec(123456), *strf::hex(0x123456)));
-    BM(, to_string_rc.tr("blah {} blah {} blah", +strf::right(123456, 20, '_'), *strf::hex(0x123456)<20));
-
-    BM(, to_string_nr.tr("{}", 123456));
-    BM(, to_string_nr.tr("{}", 0.123456));
-    BM(FIXTURE_STR, to_string_nr.tr("Blah {}!\n", str));
-    BM(, to_string_nr.tr("blah {} blah {} blah", 123456, 0x123456));
-    BM(, to_string_nr.tr("blah {} blah {} blah", +strf::dec(123456), *strf::hex(0x123456)));
-    BM(, to_string_nr.tr("blah {} blah {} blah", +strf::right(123456, 20, '_'), *strf::hex(0x123456)<20));
+    BM(, strf::to_string.tr("{}", 123456));
+    BM(, strf::to_string.tr("{}", 0.123456));
+    BM(FIXTURE_STR, strf::to_string.tr("Blah {}!\n", str));
+    BM(, strf::to_string.tr("blah {} blah {} blah", 123456, 0x123456));
+    BM(, strf::to_string.tr("blah {} blah {} blah", +strf::dec(123456), *strf::hex(0x123456)));
+    BM(, strf::to_string.tr("blah {} blah {} blah", +strf::right(123456, 20, '_'), *strf::hex(0x123456)<20));
+    BM(, strf::to_string.tr("{} {} {}", 1.123e+5, pi, 1.11e-222));
+    BM(, strf::to_string.tr("{} {} {}", *strf::fixed(1.123e+5), +strf::fixed(pi, 8), strf::sci(1.11e-222)>30));
 
     BM2(,  fmt::format(FMT_COMPILE("{}"), 123456)
         , "fmt::format(FMT_COMPILE(\"{}\"), 123456)");
     BM2(,  fmt::format(FMT_COMPILE("{}"), 0.123456)
-        , "fmt::format(FMT_COMPILE(\"{}\"), 0.123456");
+        , "fmt::format(FMT_COMPILE(\"{}\"), 0.123456)");
     BM2(FIXTURE_STR, fmt::format(FMT_COMPILE("Blah {}!\n"), str)
         , "fmt::format(FMT_COMPILE(\"Blah {}!\\n\"), str)");
     BM2(,  fmt::format(FMT_COMPILE("blah {} blah {} blah"), 123456, 0x123456)
@@ -110,6 +99,10 @@ int main(int argc, char** argv)
         , "fmt::format(FMT_COMPILE(\"blah {:+} blah {:#x} blah\"), 123456, 0x123456)");
     BM2(,  fmt::format(FMT_COMPILE("blah {:_>+20} blah {:<#20x} blah"), 123456, 0x123456)
         , "fmt::format(FMT_COMPILE(\"blah {:_>+20} blah {:<#20x} blah\"), 123456, 0x123456)");
+    BM2(,  fmt::format(FMT_COMPILE( "{} {} {}" ), 1.123e+5, pi, 1.11e-222)
+        , "fmt::format(FMT_COMPILE(\"{} {} {}\"), 1.123e+5, pi, 1.11e-222)");
+    BM2(,  fmt::format(FMT_COMPILE( "{:#f} {:+.8f} {:>30e}" ), 1.123e+5, pi, 1.11e-222)
+        , "fmt::format(FMT_COMPILE(\"{:#f} {:+.8f} {:>30e}\"), 1.123e+5, pi, 1.11e-222)");
 
     BM(, fmt::format("{}", 123456));
     BM(, fmt::format("{}", 0.123456));
@@ -117,28 +110,23 @@ int main(int argc, char** argv)
     BM(, fmt::format("blah {} blah {} blah", 123456, 0x123456));
     BM(, fmt::format("blah {:+} blah {:#x} blah", 123456, 0x123456));
     BM(, fmt::format("blah {:_>+20} blah {:<#20x} blah", 123456, 0x123456));
+    BM(, fmt::format("{} {} {}", 1.123e+5, pi, 1.11e-222));
+    BM(, fmt::format("{:#f} {:+.8f} {:>30e}", 1.123e+5, pi, 1.11e-222));
 
     BM(FIXTURE_U8SAMPLE, strf::to_u16string.reserve_calc() (strf::conv(u8sample)));
     BM(FIXTURE_U8SAMPLE, strf::to_u16string.no_reserve()   (strf::conv(u8sample)));
     BM(FIXTURE_U8SAMPLE, strf::to_u16string.reserve(510)   (strf::conv(u8sample)));
-    // benchmark::RegisterBenchmark
-    //     ( "strf::to(u16buff)(strf::conv(u8sample)); strf::to_u16string.reserve_calc()(u16buff)"
-    //     , u8_to_u16_buff );
 
     BM(FIXTURE_U16SAMPLE, strf::to_string.reserve_calc() (strf::conv(u16sample)));
     BM(FIXTURE_U16SAMPLE, strf::to_string.no_reserve()   (strf::conv(u16sample)));
     BM(FIXTURE_U16SAMPLE, strf::to_string.reserve(510)   (strf::conv(u16sample)));
-    // benchmark::RegisterBenchmark
-    //     ( "strf::to(u8buff)(strf::conv(u16sample)); to_string_rc(u8buff)"
-    //     , u16_to_u8_buff );
 
     benchmark::Initialize(&argc, argv);
     benchmark::RunSpecifiedBenchmarks();
 
     strf::to(stdout)
         ( "\n  where :"
-          "\n    constexpr auto to_string_rc = strf::to_string.reserve_calc();"
-          "\n    constexpr auto to_string_nr = strf::to_string.no_reserve();"
+          "\n    constexpr double pi = M_PI;"
           "\n    " STR(FIXTURE_STR)
           "\n    " STR(FIXTURE_U8SAMPLE)
           "\n    " STR(FIXTURE_U16SAMPLE)
