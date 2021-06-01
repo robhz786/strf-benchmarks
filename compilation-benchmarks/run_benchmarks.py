@@ -29,7 +29,7 @@ if cxxflags_str is not None:
         cxx_standard = cxxflags_str[idx + 8: idx + 10]
         if cxx_standard == '2a':
             cxx_standard == '20'
-del cxxflags_str
+#del cxxflags_str
 
 
 ldflags = []
@@ -88,7 +88,7 @@ def create_obj_files(build_type, flags, basename, num_objs) :
     wtime = 0.0
     utime = 0.0
     stime = 0.0
-    osize = 0L
+    osize = 0
     for i in range(num_objs) :
         obj_id = str(i)
 #       print(compile_unit_cmd(build_type, flags, basename, obj_id))
@@ -182,31 +182,6 @@ def obj_files(build_type, basename, num_objs):
         filenames.append(obj_filename(build_type, basename, str(i)))
     return filenames
 
-def cmake_generate_strf(buildtype):
-    build_dir = tmp_dir + "/strf-" + buildtype
-    src_dir = os.path.normpath(pwd + "/../external/strf")
-    os.makedirs(build_dir)
-    gen_args = ["cmake", "-G", "Unix Makefiles", "-DCMAKE_BUILD_TYPE=" + buildtype,
-                "-DCMAKE_CXX_STANDARD=" + cxx_standard, src_dir]
-    gen_p = subprocess.Popen(gen_args, cwd=build_dir)
-    gen_p.wait()
-    if gen_p.returncode != 0:
-        print("Failed generation CMake build project for Strf")
-        return 1
-    return build_dir
-
-def cmake_generate_fmt(buildtype):
-    build_dir = tmp_dir + "/fmt-" + buildtype
-    os.makedirs(build_dir)
-    gen_args = ["cmake", "-G", "Unix Makefiles", "-DCMAKE_BUILD_TYPE=" + buildtype,
-            "-DFMT_DOC=OFF", "-DFMT_TEST=OFF", "-DCMAKE_CXX_STANDARD=" + cxx_standard, fmt_dir]
-    gen_p = subprocess.Popen(gen_args, cwd=build_dir)
-    gen_p.wait()
-    if gen_p.returncode != 0:
-        print("Failed generation CMake build project for {fmt}")
-        return 1
-    return build_dir
-
 def cmake_build(build_dir):
     build_args = ["cmake", "--build", "."]
     build_p = subprocess.Popen(build_args, cwd=build_dir)
@@ -215,18 +190,87 @@ def cmake_build(build_dir):
          print("Failed to build")
          return 1
 
-def build_libstrf(buildtype):
-    print("building Strf " + buildtype)
-    build_dir = cmake_generate_strf(buildtype)
-    cmake_build(build_dir)
-    return build_dir + "/" + "libstrf.a"
+def run_subprocess(cmd, cwd, failure_message):
+    if not os.path.isdir(cwd):
+        os.makedirs(cwd)
+    process = subprocess.Popen(cmd, cwd=cwd)
+    process.wait();
+    if process.returncode != 0:
+        print(failure_message)
+        exit(1)
 
-def build_libfmt(buildtype):
-    print("building {fmt} " + buildtype)
-    build_dir = cmake_generate_fmt(buildtype)
+def build_libstrf_minsize():
+    build_dir = tmp_dir + "/strf-minsize"
+    src_dir = os.path.normpath(pwd + "/../external/strf")
+    cmake_gen_cmd = ["cmake", "-G", "Ninja", "-DCMAKE_BUILD_TYPE=MINSIZEREL",
+                     "-DCMAKE_CXX_STANDARD=" + cxx_standard,
+                     "-DCMAKE_CXX_FLAGS=" + cxxflags_str,
+                     src_dir]
+    run_subprocess( cmake_gen_cmd, build_dir
+                  , "Failed generation CMake project for minsize Strf" )
     cmake_build(build_dir)
-    #libname = "libfmtd.a" if buildtype == build_type_debug() else "libfmt.a"
-    return build_dir + "/" + "libfmt.a"
+    return build_dir + "/libstrf.a"
+
+def build_libstrf_release():
+    build_dir = tmp_dir + "/strf-release"
+    src_dir = os.path.normpath(pwd + "/../external/strf")
+    cmake_gen_cmd = ["cmake", "-G", "Ninja", "-DCMAKE_BUILD_TYPE=RELEASE",
+                     "-DCMAKE_CXX_STANDARD=" + cxx_standard,
+                     src_dir]
+    run_subprocess( cmake_gen_cmd, build_dir
+                  , "Failed generation CMake project for Release Strf" )
+    cmake_build(build_dir)
+    return build_dir + "/libstrf.a"
+
+def build_libstrf_debug():
+    build_dir = tmp_dir + "/strf-debug"
+    src_dir = os.path.normpath(pwd + "/../external/strf")
+    cmake_gen_cmd = ["cmake", "-G", "Ninja", "-DCMAKE_BUILD_TYPE=DEBUG",
+                     "-DCMAKE_CXX_STANDARD=" + cxx_standard,
+                     src_dir]
+    run_subprocess( cmake_gen_cmd, build_dir
+                  , "Failed generation CMake project for debug Strf" )
+    cmake_build(build_dir)
+    return build_dir + "/libstrf.a"
+
+def build_libfmt_minsize():
+    build_dir = tmp_dir + "/fmt-minsize"
+    src_dir = os.path.normpath(pwd + "/../external/fmt/")
+    cmake_gen_cmd = ["cmake", "-G", "Ninja", "-DCMAKE_BUILD_TYPE=MINSIZEREL",
+                     "-DCMAKE_CXX_STANDARD=" + cxx_standard,
+                     "-DFMT_DOC=OFF", "-DFMT_TEST=OFF",
+                     "-DCMAKE_CXX_FLAGS=" + cxxflags_str,
+                     src_dir]
+    run_subprocess( cmake_gen_cmd, build_dir
+                  , "Failed generation CMake project for minsize {fmt}" )
+    cmake_build(build_dir)
+    return build_dir + "/libfmt.a"
+
+def build_libfmt_release():
+    build_dir = tmp_dir + "/fmt-release"
+    src_dir = os.path.normpath(pwd + "/../external/fmt/")
+    cmake_gen_cmd = ["cmake", "-G", "Ninja", "-DCMAKE_BUILD_TYPE=RELEASE",
+                     "-DCMAKE_CXX_STANDARD=" + cxx_standard,
+                     "-DFMT_DOC=OFF", "-DFMT_TEST=OFF",
+                     "-DCMAKE_CXX_FLAGS=" + cxxflags_str,
+                     src_dir]
+    run_subprocess( cmake_gen_cmd, build_dir
+                  , "Failed generation CMake project for release {fmt}" )
+    cmake_build(build_dir)
+    return build_dir + "/libfmt.a"
+
+def build_libfmt_debug():
+    build_dir = tmp_dir + "/fmt-debug"
+    src_dir = os.path.normpath(pwd + "/../external/fmt/")
+    cmake_gen_cmd = ["cmake", "-G", "Ninja", "-DCMAKE_BUILD_TYPE=DEBUG",
+                     "-DCMAKE_CXX_STANDARD=" + cxx_standard,
+                     "-DFMT_DOC=OFF", "-DFMT_TEST=OFF",
+                     "-DCMAKE_CXX_FLAGS=" + cxxflags_str,
+                     src_dir]
+    run_subprocess( cmake_gen_cmd, build_dir
+                  , "Failed generation CMake project for debug {fmt}" )
+    cmake_build(build_dir)
+    return build_dir + "/libfmtd.a"
 
 def build_type_get_cflag(build_type):
     return "-" + build_type
@@ -237,18 +281,13 @@ def build_type_get_strid(build_type):
 shutil.rmtree(tmp_dir, ignore_errors=True)
 os.makedirs(tmp_dir)
 
-lib_strf_Os = build_libstrf("O3")
-lib_strf_O3 = build_libstrf("Os")
-lib_strf_g  = build_libstrf("g")
+lib_strf_Os = build_libstrf_minsize()
+lib_strf_O3 = build_libstrf_release()
+lib_strf_g  = build_libstrf_debug()
 #
-libfmt_Os = build_libfmt("O3")
-libfmt_O3 = build_libfmt("Os")
-libfmt_g  = build_libfmt("g")
-
-strf_static_lib = [strf_incl, "-DSTRF_SEPARATE_COMPILATION"]
-strf_ho         = [strf_incl]
-fmt_static_lib  = [fmt_incl]
-fmt_ho          = [fmt_incl, "-DFMT_HEADER_ONLY=1"]
+libfmt_Os = build_libfmt_minsize()
+libfmt_O3 = build_libfmt_release()
+libfmt_g  = build_libfmt_debug()
 
 def benchmark_Os_header_only_strf(prefix, suffix):
     main_src = prefix + "_main.cpp"
@@ -271,7 +310,8 @@ def benchmark_Os_header_only_fmtlib(prefix, suffix):
 def benchmark_Os_static_link_fmtlib(prefix, suffix):
     main_src = prefix + "_main.cpp"
     basename = prefix + suffix
-    benchmark("Os", [fmt_incl], basename, main_src, [libfmt_Os])
+    flags = [fmt_incl]
+    benchmark("Os", flags, basename, main_src, [libfmt_Os])
 
 def benchmark_Os_stdlib(prefix, suffix):
     main_src = prefix + "_main.cpp"
