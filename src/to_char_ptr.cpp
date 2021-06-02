@@ -2,7 +2,8 @@
 //  (See accompanying file LICENSE or copy at
 //  http://www.boost.org/LICENSE_1_0.txt)
 
-#define  _CRT_SECURE_NO_WARNINGS
+#define _USE_MATH_DEFINES
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <strf/to_cfile.hpp>
 #include <stdio.h>
@@ -38,12 +39,12 @@ constexpr double pi = M_PI;
 
 int main(int argc, char** argv)
 {
-    BM(FIXTURE_STR, strf::to_range(dest, dest_size)("Blah ", str, "!\n"));
-    BM(, strf::to_range(dest, dest_size)("blah ", 123456, " blah ", 0x123456, " blah"));
-    BM(, strf::to_range(dest, dest_size)("blah ", +strf::dec(123456), " blah ", *strf::hex(0x123456), " blah"));
-    BM(, strf::to_range(dest, dest_size)("blah ", +strf::right(123456, 20, '_'), " blah ", *strf::hex(0x123456)<20, " blah"));
-    BM(, strf::to_range(dest, dest_size)(1.123e+5, ' ', pi, ' ', 1.11e-222));
-    BM(, strf::to_range(dest, dest_size)(*strf::fixed(1.123e+5), ' ', +strf::fixed(pi, 8), ' ', strf::sci(1.11e-222)>30));
+    BM(FIXTURE_STR, strf::to(dest, dest_size)("Blah ", str, "!\n"));
+    BM(, strf::to(dest, dest_size)("blah ", 123456, " blah ", 0x123456, " blah"));
+    BM(, strf::to(dest, dest_size)("blah ", +strf::dec(123456), " blah ", *strf::hex(0x123456), " blah"));
+    BM(, strf::to(dest, dest_size)("blah ", +strf::right(123456, 20, '_'), " blah ", *strf::hex(0x123456)<20, " blah"));
+    BM(, strf::to(dest, dest_size)(1.123e+5, ' ', pi, ' ', 1.11e-222));
+    BM(, strf::to(dest, dest_size)(*strf::fixed(1.123e+5), ' ', +strf::fixed(pi, 8), ' ', strf::sci(1.11e-222)>30));
 
     BM(FIXTURE_STR, strf::to(dest, dest_size).tr("Blah {}!\n", str));
     BM(, strf::to(dest, dest_size).tr("blah {} blah {} blah", 123456, 0x123456));

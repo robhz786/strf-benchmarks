@@ -2,7 +2,8 @@
 //  (See accompanying file LICENSE or copy at
 //  http://www.boost.org/LICENSE_1_0.txt)
 
-#define  _CRT_SECURE_NO_WARNINGS
+#define _USE_MATH_DEFINES
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <strf/to_string.hpp>
 #include <strf/to_cfile.hpp>
