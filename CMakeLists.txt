@@ -58,6 +58,7 @@ foreach(
     join
     width_calculation
     utf8_to_utf16
+    utf8_to_utf32
     utf16_to_utf8
     numpunct
 )
