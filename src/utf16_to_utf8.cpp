@@ -30,8 +30,7 @@ static void fill_with_codepoints
     , char16_t* str
     , std::uint32_t count)
 {
-    auto count2 = 2 * count;
-    for(std::uint32_t i = 0, x = 0x80; i < count2; ++i, x += 0x10){
+    for(std::uint32_t i = 0, x = 0x80; i < count; ++i, x += 0x10){
         if (x >= 0x800) {
             x = 0x80;
         }
@@ -44,8 +43,7 @@ static void fill_with_codepoints
     , char16_t* str
     , std::uint32_t count)
 {
-    auto count3 = 3 * count;
-    for(std::uint32_t i = 0, x = 0x800; i < count3; ++ i, x += 0x100){
+    for(std::uint32_t i = 0, x = 0x800; i < count; ++ i, x += 0x100){
         if (x >= 0xD800 && x <= 0xDFFF){
             x= 0xE000;
         }
@@ -61,8 +59,8 @@ static void fill_with_codepoints
     , char16_t* str
     , std::uint32_t count)
 {
-    auto count4 = 4 * count;
-    for(std::uint32_t i = 0, x = 0x10000; i < count4; i += 2, x += 0x1000){
+    auto count2 = 2 * count;
+    for(std::uint32_t i = 0, x = 0x10000; i < count2; i += 2, x += 0x1000){
         if (x >= 0x10FFFF) {
             x = 0x10000;
         }
@@ -79,21 +77,24 @@ void fill_with_codepoints(char16_t* str, unsigned count) {
 
 template <std::size_t CodepointsCount, std::size_t CodepointsSize>
 static void bm_strf(benchmark::State& state) {
-    char16_t u16sample[CodepointsCount * 2];
-    char     u8dest   [CodepointsCount * 4 + 1];
+    constexpr std::size_t u16sample_size = CodepointsCount * (1 + (CodepointsSize==4));
+    constexpr std::size_t u8dest_size = CodepointsCount * CodepointsSize;
+    char16_t u16sample[u16sample_size];
+    char     u8dest   [u8dest_size];
     fill_with_codepoints<CodepointsSize>(u16sample, CodepointsCount);
-    strf::detail::simple_string_view<char16_t> u16str
-        (u16sample, CodepointsCount * (1 + (CodepointsSize==4)));
+    strf::detail::simple_string_view<char16_t> u16str(u16sample, u16sample_size);
     for(auto _ : state) {
-        strf::to(u8dest)(strf::conv(u16str));
+        strf::to_range(u8dest)(strf::conv(u16str));
         benchmark::DoNotOptimize(u8dest);
     }
 }
 
 template <std::size_t CodepointsCount, std::size_t CodepointsSize>
 static void bm_codecvt(benchmark::State& state) {
-    char16_t u16sample[CodepointsCount * 2];
-    char     u8dest   [CodepointsCount * 4 + 1];
+    constexpr std::size_t u16sample_size = CodepointsCount * (1 + (CodepointsSize==4));
+    constexpr std::size_t u8dest_size = CodepointsCount * CodepointsSize;
+    char16_t u16sample[u16sample_size];
+    char     u8dest   [u8dest_size];
     const char16_t* u16from_next = nullptr;
     char* u8to_next = nullptr;
     fill_with_codepoints<CodepointsSize>(u16sample, CodepointsCount);
@@ -103,10 +104,10 @@ static void bm_codecvt(benchmark::State& state) {
         codecvt.out
             ( mb
             , u16sample
-            , u16sample + CodepointsCount * (1 + (CodepointsSize == 4))
+            , u16sample + u16sample_size
             , u16from_next
             , u8dest
-            , u8dest + CodepointsCount * 4
+            , u8dest + u8dest_size
             , u8to_next);
         benchmark::DoNotOptimize(u8dest);
     }

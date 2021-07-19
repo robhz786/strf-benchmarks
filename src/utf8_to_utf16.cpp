@@ -86,28 +86,28 @@ void fill_with_codepoints(char* str, unsigned count) {
 
 template <std::size_t CodepointsCount, std::size_t CodepointsSize>
 static void bm_strf(benchmark::State& state) {
-    constexpr std::size_t u8buff_size = CodepointsCount * 4;
+    constexpr std::size_t u8buff_size = CodepointsCount * CodepointsSize;
+    constexpr std::size_t u16dest_size = CodepointsCount * (1 + (CodepointsSize==4));
     char u8sample[u8buff_size];
-    char16_t u16dest[CodepointsCount * 2 + 1];
+    char16_t u16dest[u16dest_size];
     fill_with_codepoints<CodepointsSize>(u8sample, CodepointsCount);
-    strf::detail::simple_string_view<char> u8str(u8sample, CodepointsCount * CodepointsSize);
+    strf::detail::simple_string_view<char> u8str(u8sample, u8buff_size);
     for(auto _ : state) {
-        strf::to(u16dest)(strf::conv(u8str));
+        strf::to_range(u16dest)(strf::conv(u8str));
         benchmark::DoNotOptimize(u16dest);
-        //benchmark::DoNotOptimize(u8sample);
     }
 }
 
 template <std::size_t CodepointsCount, std::size_t CodepointsSize>
 static void bm_codecvt(benchmark::State& state) {
-    constexpr std::size_t u8buff_size = CodepointsCount * 4;
-    constexpr std::size_t u16buff_size = u8buff_size / 2;
+    constexpr std::size_t u8buff_size = CodepointsCount * CodepointsSize;
+    constexpr std::size_t u16dest_size = CodepointsCount * (1 + (CodepointsSize==4));
     char u8sample[u8buff_size];
-    char16_t u16dest[CodepointsCount * 2 + 1];
+    char16_t u16dest[u16dest_size];
     const char* u8from_next = nullptr;
     char16_t* u16to_next = nullptr;
     fill_with_codepoints<CodepointsSize>(u8sample, CodepointsCount);
-    strf::detail::simple_string_view<char> u8str(u8sample, CodepointsCount * CodepointsSize);
+    strf::detail::simple_string_view<char> u8str(u8sample, u8buff_size);
     std::codecvt_utf8_utf16<char16_t> codecvt;
     for(auto _ : state) {
         std::mbstate_t mb{};
@@ -117,7 +117,7 @@ static void bm_codecvt(benchmark::State& state) {
             , u8sample + u8buff_size
             , u8from_next
             , u16dest
-            , u16dest + u16buff_size
+            , u16dest + u16dest_size
             , u16to_next);
         *u16to_next = '\0';
         benchmark::DoNotOptimize(u16dest);
