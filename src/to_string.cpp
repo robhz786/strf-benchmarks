@@ -35,7 +35,7 @@
 
 
 
-#define FIXTURE_STR std::string str = "blah blah blah blah blah blah blah";
+#define FIXTURE_STR std::string str = "blah blah blah blah blah ";
 
 #define FIXTURE_U8SAMPLE  auto u8sample = std::string(500, 'A');
 #define FIXTURE_U16SAMPLE auto u16sample = std::string(500, 'A');
@@ -73,6 +73,8 @@ int main(int argc, char** argv)
     BM(,strf::to_string(123456));
     BM(,strf::to_string(0.123456));
     BM(FIXTURE_STR, strf::to_string("Blah ", str, "!\n"));
+    BM(FIXTURE_STR, strf::to_string("Blah ",  strf::right(str, 40, '.'), "!\n"));
+    //BM(FIXTURE_STR, strf::to_string("Blah ",  strf::right(str, 40, U'\u2026'), "!\n"));
     BM(, strf::to_string("blah ", 123456, " blah ", 0x123456, " blah"));
     BM(, strf::to_string("blah ", +strf::dec(123456), " blah ", *strf::hex(0x123456), " blah"));
     BM(, strf::to_string("blah ", +strf::right(123456, 20, '_'), " blah ", *strf::hex(0x123456)<20, " blah"));
@@ -82,6 +84,8 @@ int main(int argc, char** argv)
     BM(, strf::to_string.tr("{}", 123456));
     BM(, strf::to_string.tr("{}", 0.123456));
     BM(FIXTURE_STR, strf::to_string.tr("Blah {}!\n", str));
+    BM(FIXTURE_STR, strf::to_string.tr("Blah {}!\n", strf::right(str, 40, '.')));
+    //BM(FIXTURE_STR, strf::to_string.tr("Blah {}!\n", strf::right(str, 40, U'\u2026') ));
     BM(, strf::to_string.tr("blah {} blah {} blah", 123456, 0x123456));
     BM(, strf::to_string.tr("blah {} blah {} blah", +strf::dec(123456), *strf::hex(0x123456)));
     BM(, strf::to_string.tr("blah {} blah {} blah", +strf::right(123456, 20, '_'), *strf::hex(0x123456)<20));
@@ -92,8 +96,15 @@ int main(int argc, char** argv)
         , "fmt::format(FMT_COMPILE(\"{}\"), 123456)");
     BM2(,  fmt::format(FMT_COMPILE("{}"), 0.123456)
         , "fmt::format(FMT_COMPILE(\"{}\"), 0.123456)");
-    BM2(FIXTURE_STR, fmt::format(FMT_COMPILE("Blah {}!\n"), str)
-        , "fmt::format(FMT_COMPILE(\"Blah {}!\\n\"), str)");
+    BM2( FIXTURE_STR
+       ,  fmt::format(FMT_COMPILE("Blah {}!\n"), str)
+       , "fmt::format(FMT_COMPILE(\"Blah {}!\\n\"), str)");
+    BM2(FIXTURE_STR
+       ,  fmt::format(FMT_COMPILE("Blah {:.>40}!\n"), str)
+       , "fmt::format(FMT_COMPILE(\"Blah {:.>40}!\\n\"), str)");
+    // BM2(FIXTURE_STR
+    //    ,  fmt::format(FMT_COMPILE("Blah {:\xE2\x80\xA6>40}!\n"), str)
+    //    , "fmt::format(FMT_COMPILE(\"Blah {:\\xE2\\x80\\xA6>40}!\\n\"), str)");
     BM2(,  fmt::format(FMT_COMPILE("blah {} blah {} blah"), 123456, 0x123456)
         , "fmt::format(FMT_COMPILE(\"blah {} blah {} blah\"), 123456, 0x123456)");
     BM2(,  fmt::format(FMT_COMPILE("blah {:+} blah {:#x} blah"), 123456, 0x123456)
@@ -108,6 +119,8 @@ int main(int argc, char** argv)
     BM(, fmt::format("{}", 123456));
     BM(, fmt::format("{}", 0.123456));
     BM(FIXTURE_STR, fmt::format("Blah {}!\n", str));
+    BM(FIXTURE_STR, fmt::format("Blah {:.>40}!\n", str));
+    // BM(FIXTURE_STR, fmt::format("Blah {:\xE2\x80\xA6>40}!\n", str));
     BM(, fmt::format("blah {} blah {} blah", 123456, 0x123456));
     BM(, fmt::format("blah {:+} blah {:#x} blah", 123456, 0x123456));
     BM(, fmt::format("blah {:_>+20} blah {:<#20x} blah", 123456, 0x123456));
