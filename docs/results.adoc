@@ -377,10 +377,10 @@ cmake --build . --target to_string-header-only
 
 Print a string
 
-[%header,cols="33,^10,^10,^10,^10,^10,^10",stripes=even]
+[%header,cols="40,^10,^10,^10,^10,^10,^10",stripes=even]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1.** `strf::to(...)(...)`
+| **1.**`strf::to(...)(...)`
 | `{to_char_ptr_ho_msvc_a1}`
 | `{to_char_ptr_st_msvc_a1}`
 | `{to_char_ptr_ho_gcc_a1}`
@@ -388,7 +388,7 @@ Print a string
 | `{to_char_ptr_ho_clang_a1}`
 | `{to_char_ptr_st_clang_a1}`
 
-| **2.** `strf::to(...).tr(...)`
+| **2.**`strf::to(...).tr(...)`
 | `{to_char_ptr_ho_msvc_b1}`
 | `{to_char_ptr_st_msvc_b1}`
 | `{to_char_ptr_ho_gcc_b1}`
@@ -396,7 +396,7 @@ Print a string
 | `{to_char_ptr_ho_clang_b1}`
 | `{to_char_ptr_st_clang_b1}`
 
-| **3.** `fmt::format_to` / `FMT_COMPILE`
+| **3.**`fmt::format_to(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_c1}`
 | `{to_char_ptr_st_msvc_c1}`
 | `{to_char_ptr_ho_gcc_c1}`
@@ -404,7 +404,7 @@ Print a string
 | `{to_char_ptr_ho_clang_c1}`
 | `{to_char_ptr_st_clang_c1}`
 
-| **4.** `fmt::format_to_n` / `FMT_COMPILE`
+| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_d1}`
 | `{to_char_ptr_st_msvc_d1}`
 | `{to_char_ptr_ho_gcc_d1}`
@@ -412,7 +412,7 @@ Print a string
 | `{to_char_ptr_ho_clang_d1}`
 | `{to_char_ptr_st_clang_d1}`
 
-| **5.** `fmt::format_to`
+| **5.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_e1}`
 | `{to_char_ptr_st_msvc_e1}`
 | `{to_char_ptr_ho_gcc_e1}`
@@ -420,7 +420,7 @@ Print a string
 | `{to_char_ptr_ho_clang_e1}`
 | `{to_char_ptr_st_clang_e1}`
 
-| **6.** `fmt::format_to_n`
+| **6.**`fmt::format_to_n(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_f1}`
 | `{to_char_ptr_st_msvc_f1}`
 | `{to_char_ptr_ho_gcc_f1}`
@@ -428,7 +428,7 @@ Print a string
 | `{to_char_ptr_ho_clang_f1}`
 | `{to_char_ptr_st_clang_f1}`
 
-| **7.** `std::sprintf`
+| **7.**`std::sprintf`
 |
 | `{to_char_ptr_st_msvc_g1}`
 |
@@ -457,10 +457,10 @@ Print a string
 
 Print a string with alignment formatting
 
-[%header,cols="33,^10,^10,^10,^10,^10,^10",stripes=even]
+[%header,cols="40,^10,^10,^10,^10,^10,^10",stripes=even]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1.** `strf::to(...)(...)`
+| **1.**`strf::to(...)(...)`
 | `{to_char_ptr_ho_msvc_a2}`
 | `{to_char_ptr_st_msvc_a2}`
 | `{to_char_ptr_ho_gcc_a2}`
@@ -468,7 +468,7 @@ Print a string with alignment formatting
 | `{to_char_ptr_ho_clang_a2}`
 | `{to_char_ptr_st_clang_a2}`
 
-| **2.** `strf::to(...).tr(...)`
+| **2.**`strf::to(...).tr(...)`
 | `{to_char_ptr_ho_msvc_b2}`
 | `{to_char_ptr_st_msvc_b2}`
 | `{to_char_ptr_ho_gcc_b2}`
@@ -476,7 +476,7 @@ Print a string with alignment formatting
 | `{to_char_ptr_ho_clang_b2}`
 | `{to_char_ptr_st_clang_b2}`
 
-| **3.** `fmt::format_to` / `FMT_COMPILE`
+| **3.**`fmt::format_to(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_c2}`
 | `{to_char_ptr_st_msvc_c2}`
 | `{to_char_ptr_ho_gcc_c2}`
@@ -484,7 +484,7 @@ Print a string with alignment formatting
 | `{to_char_ptr_ho_clang_c2}`
 | `{to_char_ptr_st_clang_c2}`
 
-| **4.** `fmt::format_to_n` / `FMT_COMPILE`
+| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_d2}`
 | `{to_char_ptr_st_msvc_d2}`
 | `{to_char_ptr_ho_gcc_d2}`
@@ -492,7 +492,7 @@ Print a string with alignment formatting
 | `{to_char_ptr_ho_clang_d2}`
 | `{to_char_ptr_st_clang_d2}`
 
-| **5.** `fmt::format_to`
+| **5.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_e2}`
 | `{to_char_ptr_st_msvc_e2}`
 | `{to_char_ptr_ho_gcc_e2}`
@@ -500,7 +500,7 @@ Print a string with alignment formatting
 | `{to_char_ptr_ho_clang_e2}`
 | `{to_char_ptr_st_clang_e2}`
 
-| **6.** `fmt::format_to_n`
+| **6.**`fmt::format_to_n(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_f2}`
 | `{to_char_ptr_st_msvc_f2}`
 | `{to_char_ptr_ho_gcc_f2}`
@@ -508,7 +508,7 @@ Print a string with alignment formatting
 | `{to_char_ptr_ho_clang_f2}`
 | `{to_char_ptr_st_clang_f2}`
 
-| **7.** `std::sprintf`
+| **7.**`std::sprintf`
 |
 | `{to_char_ptr_st_msvc_g2}`
 |
@@ -537,10 +537,10 @@ Print a string with alignment formatting
 ==== Sample 3
 Print integer without formatting
 
-[%header,cols="33,^10,^10,^10,^10,^10,^10",stripes=even]
+[%header,cols="40,^10,^10,^10,^10,^10,^10",stripes=even]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1.** `strf::to(...)(...)`
+| **1.**`strf::to(...)(...)`
 | `{to_char_ptr_ho_msvc_a3}`
 | `{to_char_ptr_st_msvc_a3}`
 | `{to_char_ptr_ho_gcc_a3}`
@@ -548,7 +548,7 @@ Print integer without formatting
 | `{to_char_ptr_ho_clang_a3}`
 | `{to_char_ptr_st_clang_a3}`
 
-| **2.** `strf::to(...).tr(...)`
+| **2.**`strf::to(...).tr(...)`
 | `{to_char_ptr_ho_msvc_b3}`
 | `{to_char_ptr_st_msvc_b3}`
 | `{to_char_ptr_ho_gcc_b3}`
@@ -556,7 +556,7 @@ Print integer without formatting
 | `{to_char_ptr_ho_clang_b3}`
 | `{to_char_ptr_st_clang_b3}`
 
-| **3.** `fmt::format_to` / `FMT_COMPILE`
+| **3.**`fmt::format_to(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_c3}`
 | `{to_char_ptr_st_msvc_c3}`
 | `{to_char_ptr_ho_gcc_c3}`
@@ -564,7 +564,7 @@ Print integer without formatting
 | `{to_char_ptr_ho_clang_c3}`
 | `{to_char_ptr_st_clang_c3}`
 
-| **4.** `fmt::format_to_n` / `FMT_COMPILE`
+| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_d3}`
 | `{to_char_ptr_st_msvc_d3}`
 | `{to_char_ptr_ho_gcc_d3}`
@@ -572,7 +572,7 @@ Print integer without formatting
 | `{to_char_ptr_ho_clang_d3}`
 | `{to_char_ptr_st_clang_d3}`
 
-| **5.** `fmt::format_to`
+| **5.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_e3}`
 | `{to_char_ptr_st_msvc_e3}`
 | `{to_char_ptr_ho_gcc_e3}`
@@ -580,7 +580,7 @@ Print integer without formatting
 | `{to_char_ptr_ho_clang_e3}`
 | `{to_char_ptr_st_clang_e3}`
 
-| **6.** `fmt::format_to_n`
+| **6.**`fmt::format_to_n(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_f3}`
 | `{to_char_ptr_st_msvc_f3}`
 | `{to_char_ptr_ho_gcc_f3}`
@@ -588,7 +588,7 @@ Print integer without formatting
 | `{to_char_ptr_ho_clang_f3}`
 | `{to_char_ptr_st_clang_f3}`
 
-| **7.** `std::sprintf`
+| **7.**`std::sprintf`
 |
 | `{to_char_ptr_st_msvc_g3}`
 |
@@ -615,10 +615,10 @@ Print integer without formatting
 ==== Sample 4
 Print some formatted integers
 
-[%header,cols="33,^10,^10,^10,^10,^10,^10",stripes=even]
+[%header,cols="40,^10,^10,^10,^10,^10,^10",stripes=even]
 |===
 |  | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1.** `strf::to(...)(...)`
+| **1.**`strf::to(...)(...)`
 | `{to_char_ptr_ho_msvc_a4}`
 | `{to_char_ptr_st_msvc_a4}`
 | `{to_char_ptr_ho_gcc_a4}`
@@ -626,7 +626,7 @@ Print some formatted integers
 | `{to_char_ptr_ho_clang_a4}`
 | `{to_char_ptr_st_clang_a4}`
 
-| **2.** `strf::to(...).tr(...)`
+| **2.**`strf::to(...).tr(...)`
 | `{to_char_ptr_ho_msvc_b4}`
 | `{to_char_ptr_st_msvc_b4}`
 | `{to_char_ptr_ho_gcc_b4}`
@@ -634,7 +634,7 @@ Print some formatted integers
 | `{to_char_ptr_ho_clang_b4}`
 | `{to_char_ptr_st_clang_b4}`
 
-| **3.** `fmt::format_to` / `FMT_COMPILE`
+| **3.**`fmt::format_to(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_c4}`
 | `{to_char_ptr_st_msvc_c4}`
 | `{to_char_ptr_ho_gcc_c4}`
@@ -642,7 +642,7 @@ Print some formatted integers
 | `{to_char_ptr_ho_clang_c4}`
 | `{to_char_ptr_st_clang_c4}`
 
-| **4.** `fmt::format_to_n` / `FMT_COMPILE`
+| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_d4}`
 | `{to_char_ptr_st_msvc_d4}`
 | `{to_char_ptr_ho_gcc_d4}`
@@ -650,7 +650,7 @@ Print some formatted integers
 | `{to_char_ptr_ho_clang_d4}`
 | `{to_char_ptr_st_clang_d4}`
 
-| **5.** `fmt::format_to`
+| **5.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_e4}`
 | `{to_char_ptr_st_msvc_e4}`
 | `{to_char_ptr_ho_gcc_e4}`
@@ -658,7 +658,7 @@ Print some formatted integers
 | `{to_char_ptr_ho_clang_e4}`
 | `{to_char_ptr_st_clang_e4}`
 
-| **6.** `fmt::format_to_n`
+| **6.**`fmt::format_to_n(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_f4}`
 | `{to_char_ptr_st_msvc_f4}`
 | `{to_char_ptr_ho_gcc_f4}`
@@ -666,7 +666,7 @@ Print some formatted integers
 | `{to_char_ptr_ho_clang_f4}`
 | `{to_char_ptr_st_clang_f4}`
 
-| **7.** `std::sprintf`
+| **7.**`std::sprintf`
 |
 | `{to_char_ptr_st_msvc_g4}`
 |
@@ -694,10 +694,10 @@ Print some formatted integers
 
 Print some formatted integers with alignment
 
-[%header,cols="33,^10,^10,^10,^10,^10,^10",stripes=even]
+[%header,cols="40,^10,^10,^10,^10,^10,^10",stripes=even]
 |===
 |  | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1.** `strf::to(...)(...)`
+| **1.**`strf::to(...)(...)`
 | `{to_char_ptr_ho_msvc_a5}`
 | `{to_char_ptr_st_msvc_a5}`
 | `{to_char_ptr_ho_gcc_a5}`
@@ -705,7 +705,7 @@ Print some formatted integers with alignment
 | `{to_char_ptr_ho_clang_a5}`
 | `{to_char_ptr_st_clang_a5}`
 
-| **2.** `strf::to(...).tr(...)`
+| **2.**`strf::to(...).tr(...)`
 | `{to_char_ptr_ho_msvc_b5}`
 | `{to_char_ptr_st_msvc_b5}`
 | `{to_char_ptr_ho_gcc_b5}`
@@ -713,7 +713,7 @@ Print some formatted integers with alignment
 | `{to_char_ptr_ho_clang_b5}`
 | `{to_char_ptr_st_clang_b5}`
 
-| **3.** `fmt::format_to` / `FMT_COMPILE`
+| **3.**`fmt::format_to(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_c5}`
 | `{to_char_ptr_st_msvc_c5}`
 | `{to_char_ptr_ho_gcc_c5}`
@@ -721,7 +721,7 @@ Print some formatted integers with alignment
 | `{to_char_ptr_ho_clang_c5}`
 | `{to_char_ptr_st_clang_c5}`
 
-| **4.** `fmt::format_to_n` / `FMT_COMPILE`
+| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_d5}`
 | `{to_char_ptr_st_msvc_d5}`
 | `{to_char_ptr_ho_gcc_d5}`
@@ -729,7 +729,7 @@ Print some formatted integers with alignment
 | `{to_char_ptr_ho_clang_d5}`
 | `{to_char_ptr_st_clang_d5}`
 
-| **5.** `fmt::format_to`
+| **5.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_e5}`
 | `{to_char_ptr_st_msvc_e5}`
 | `{to_char_ptr_ho_gcc_e5}`
@@ -737,7 +737,7 @@ Print some formatted integers with alignment
 | `{to_char_ptr_ho_clang_e5}`
 | `{to_char_ptr_st_clang_e5}`
 
-| **6.** `fmt::format_to_n`
+| **6.**`fmt::format_to_n(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_f5}`
 | `{to_char_ptr_st_msvc_f5}`
 | `{to_char_ptr_ho_gcc_f5}`
@@ -745,7 +745,7 @@ Print some formatted integers with alignment
 | `{to_char_ptr_ho_clang_f5}`
 | `{to_char_ptr_st_clang_f5}`
 
-| **7.** `std::sprintf`
+| **7.**`std::sprintf`
 |
 | `{to_char_ptr_st_msvc_g5}`
 |
@@ -773,10 +773,10 @@ Print some formatted integers with alignment
 
 Print floating-point values without any formatting
 
-[%header,cols="33,^10,^10,^10,^10,^10,^10",stripes=even]
+[%header,cols="40,^10,^10,^10,^10,^10,^10",stripes=even]
 |===
 |  | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1.** `strf::to(...)(...)`
+| **1.**`strf::to(...)(...)`
 | `{to_char_ptr_ho_msvc_a6}`
 | `{to_char_ptr_st_msvc_a6}`
 | `{to_char_ptr_ho_gcc_a6}`
@@ -784,7 +784,7 @@ Print floating-point values without any formatting
 | `{to_char_ptr_ho_clang_a6}`
 | `{to_char_ptr_st_clang_a6}`
 
-| **2.** `strf::to(...).tr(...)`
+| **2.**`strf::to(...).tr(...)`
 | `{to_char_ptr_ho_msvc_b6}`
 | `{to_char_ptr_st_msvc_b6}`
 | `{to_char_ptr_ho_gcc_b6}`
@@ -792,7 +792,7 @@ Print floating-point values without any formatting
 | `{to_char_ptr_ho_clang_b6}`
 | `{to_char_ptr_st_clang_b6}`
 
-| **3.** `fmt::format_to` / `FMT_COMPILE`
+| **3.**`fmt::format_to(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_c6}`
 | `{to_char_ptr_st_msvc_c6}`
 | `{to_char_ptr_ho_gcc_c6}`
@@ -800,7 +800,7 @@ Print floating-point values without any formatting
 | `{to_char_ptr_ho_clang_c6}`
 | `{to_char_ptr_st_clang_c6}`
 
-| **4.** `fmt::format_to_n` / `FMT_COMPILE`
+| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_d6}`
 | `{to_char_ptr_st_msvc_d6}`
 | `{to_char_ptr_ho_gcc_d6}`
@@ -808,7 +808,7 @@ Print floating-point values without any formatting
 | `{to_char_ptr_ho_clang_d6}`
 | `{to_char_ptr_st_clang_d6}`
 
-| **5.** `fmt::format_to`
+| **5.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_e6}`
 | `{to_char_ptr_st_msvc_e6}`
 | `{to_char_ptr_ho_gcc_e6}`
@@ -816,7 +816,7 @@ Print floating-point values without any formatting
 | `{to_char_ptr_ho_clang_e6}`
 | `{to_char_ptr_st_clang_e6}`
 
-| **6.** `fmt::format_to_n`
+| **6.**`fmt::format_to_n(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_f6}`
 | `{to_char_ptr_st_msvc_f6}`
 | `{to_char_ptr_ho_gcc_f6}`
@@ -824,7 +824,7 @@ Print floating-point values without any formatting
 | `{to_char_ptr_ho_clang_f6}`
 | `{to_char_ptr_st_clang_f6}`
 
-| **7.** `std::sprintf`
+| **7.**`std::sprintf`
 |
 | `{to_char_ptr_st_msvc_g6}`
 |
@@ -845,10 +845,10 @@ Print floating-point values without any formatting
 
 Print floating-point values with some formatting
 
-[%header,cols="33,^10,^10,^10,^10,^10,^10",stripes=even]
+[%header,cols="40,^10,^10,^10,^10,^10,^10",stripes=even]
 |===
 |  | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1.** `strf::to(...)(...)`
+| **1.**`strf::to(...)(...)`
 | `{to_char_ptr_ho_msvc_a7}`
 | `{to_char_ptr_st_msvc_a7}`
 | `{to_char_ptr_ho_gcc_a7}`
@@ -856,7 +856,7 @@ Print floating-point values with some formatting
 | `{to_char_ptr_ho_clang_a7}`
 | `{to_char_ptr_st_clang_a7}`
 
-| **2.** `strf::to(...).tr(...)`
+| **2.**`strf::to(...).tr(...)`
 | `{to_char_ptr_ho_msvc_b7}`
 | `{to_char_ptr_st_msvc_b7}`
 | `{to_char_ptr_ho_gcc_b7}`
@@ -864,7 +864,7 @@ Print floating-point values with some formatting
 | `{to_char_ptr_ho_clang_b7}`
 | `{to_char_ptr_st_clang_b7}`
 
-| **3.** `fmt::format_to` / `FMT_COMPILE`
+| **3.**`fmt::format_to(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_c7}`
 | `{to_char_ptr_st_msvc_c7}`
 | `{to_char_ptr_ho_gcc_c7}`
@@ -872,7 +872,7 @@ Print floating-point values with some formatting
 | `{to_char_ptr_ho_clang_c7}`
 | `{to_char_ptr_st_clang_c7}`
 
-| **4.** `fmt::format_to_n` / `FMT_COMPILE`
+| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_d7}`
 | `{to_char_ptr_st_msvc_d7}`
 | `{to_char_ptr_ho_gcc_d7}`
@@ -880,7 +880,7 @@ Print floating-point values with some formatting
 | `{to_char_ptr_ho_clang_d7}`
 | `{to_char_ptr_st_clang_d7}`
 
-| **5.** `fmt::format_to`
+| **5.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_e7}`
 | `{to_char_ptr_st_msvc_e7}`
 | `{to_char_ptr_ho_gcc_e7}`
@@ -888,7 +888,7 @@ Print floating-point values with some formatting
 | `{to_char_ptr_ho_clang_e7}`
 | `{to_char_ptr_st_clang_e7}`
 
-| **6.** `fmt::format_to_n`
+| **6.**`fmt::format_to_n(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_f7}`
 | `{to_char_ptr_st_msvc_f7}`
 | `{to_char_ptr_ho_gcc_f7}`
@@ -896,7 +896,7 @@ Print floating-point values with some formatting
 | `{to_char_ptr_ho_clang_f7}`
 | `{to_char_ptr_st_clang_f7}`
 
-| **7.** `std::sprintf`
+| **7.**`std::sprintf`
 |
 | `{to_char_ptr_st_msvc_g7}`
 |
@@ -1151,14 +1151,15 @@ Print floating-point values with some formatting
 
 `std::to_string` versus `strf::to_string` versus `fmt::format`
 
+
 ==== Sample 1
 
 Print an integer and nothing more.
 
-[%header,cols="20,^10,^10,^10,^10,^10,^10"]
+[%header,cols="30,^10,^10,^10,^10,^10,^10"]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1. strf**
+| **1.** `strf::to_string(...)`
 |`{to_string_ho_msvc_b1}`
 |`{to_string_st_msvc_b1}`
 |`{to_string_ho_gcc_b1}`
@@ -1166,7 +1167,7 @@ Print an integer and nothing more.
 |`{to_string_ho_clang_b1}`
 |`{to_string_st_clang_b1}`
 
-| **2. strf** (`tr`)
+| **2.** `strf::to_string.tr(...)`
 |`{to_string_ho_msvc_c1}`
 |`{to_string_st_msvc_c1}`
 |`{to_string_ho_gcc_c1}`
@@ -1174,7 +1175,7 @@ Print an integer and nothing more.
 |`{to_string_ho_clang_c1}`
 |`{to_string_st_clang_c1}`
 
-| **3. {fmt}** (`FMT_COMPILE`)
+| **3.** `fmt::format(FMT_COMPILE(...), ...)`
 |`{to_string_ho_msvc_d1}`
 |`{to_string_st_msvc_d1}`
 |`{to_string_ho_gcc_d1}`
@@ -1182,7 +1183,7 @@ Print an integer and nothing more.
 |`{to_string_ho_clang_d1}`
 |`{to_string_st_clang_d1}`
 
-| **4. {fmt}**
+| **4.** `fmt::format("...", ...)`
 |`{to_string_ho_msvc_e1}`
 |`{to_string_st_msvc_e1}`
 |`{to_string_ho_gcc_e1}`
@@ -1190,7 +1191,7 @@ Print an integer and nothing more.
 |`{to_string_ho_clang_e1}`
 |`{to_string_st_clang_e1}`
 
-| **5. std::to_string**
+| **5.** `std::to_string`
 |
 |`{to_string_st_msvc_a1}`
 |
@@ -1209,10 +1210,10 @@ Print an integer and nothing more.
 
 Print a floting point value and nothing more.
 
-[%header,cols="20,^10,^10,^10,^10,^10,^10"]
+[%header,cols="30,^10,^10,^10,^10,^10,^10"]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1. strf** 
+| **1.** `strf::to_string(...)`
 |`{to_string_ho_msvc_b2}`
 |`{to_string_st_msvc_b2}`
 |`{to_string_ho_gcc_b2}`
@@ -1220,7 +1221,7 @@ Print a floting point value and nothing more.
 |`{to_string_ho_clang_b2}`
 |`{to_string_st_clang_b2}`
 
-| **2. strf** (`tr`)
+| **2.** `strf::to_string.tr(...)`
 |`{to_string_ho_msvc_c2}`
 |`{to_string_st_msvc_c2}`
 |`{to_string_ho_gcc_c2}`
@@ -1228,7 +1229,7 @@ Print a floting point value and nothing more.
 |`{to_string_ho_clang_c2}`
 |`{to_string_st_clang_c2}`
 
-| **3. {fmt}** (`FMT_COMPILE`)
+| **3.** `fmt::format(FMT_COMPILE(...), ...)`
 |`{to_string_ho_msvc_d2}`
 |`{to_string_st_msvc_d2}`
 |`{to_string_ho_gcc_d2}`
@@ -1236,7 +1237,7 @@ Print a floting point value and nothing more.
 |`{to_string_ho_clang_d2}`
 |`{to_string_st_clang_d2}`
 
-| **4. {fmt}**
+| **4.** `fmt::format("...", ...)`
 |`{to_string_ho_msvc_e2}`
 |`{to_string_st_msvc_e2}`
 |`{to_string_ho_gcc_e2}`
@@ -1244,7 +1245,7 @@ Print a floting point value and nothing more.
 |`{to_string_ho_clang_e2}`
 |`{to_string_st_clang_e2}`
 
-| **5. std::to_string**
+| **5.** `std::to_string`
 |
 |`{to_string_st_msvc_a2}`
 |
@@ -1263,10 +1264,10 @@ Print a floting point value and nothing more.
 
 Print a string
 
-[%header,cols="20,^10,^10,^10,^10,^10,^10"]
+[%header,cols="30,^10,^10,^10,^10,^10,^10"]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1. strf**
+| **1.** `strf::to_string(...)`
 |`{to_string_ho_msvc_b3}`
 |`{to_string_st_msvc_b3}`
 |`{to_string_ho_gcc_b3}`
@@ -1274,7 +1275,7 @@ Print a string
 |`{to_string_ho_clang_b3}`
 |`{to_string_st_clang_b3}`
 
-| **2. strf** (`tr`)
+| **2.** `strf::to_string.tr(...)`
 |`{to_string_ho_msvc_c3}`
 |`{to_string_st_msvc_c3}`
 |`{to_string_ho_gcc_c3}`
@@ -1282,7 +1283,7 @@ Print a string
 |`{to_string_ho_clang_c3}`
 |`{to_string_st_clang_c3}`
 
-| **3. {fmt}** (`FMT_COMPILE`)
+| **3.** `fmt::format(FMT_COMPILE(...), ...)`
 |`{to_string_ho_msvc_d3}`
 |`{to_string_st_msvc_d3}`
 |`{to_string_ho_gcc_d3}`
@@ -1290,7 +1291,7 @@ Print a string
 |`{to_string_ho_clang_d3}`
 |`{to_string_st_clang_d3}`
 
-| **4. {fmt}**
+| **4.** `fmt::format("...", ...)`
 |`{to_string_ho_msvc_e3}`
 |`{to_string_st_msvc_e3}`
 |`{to_string_ho_gcc_e3}`
@@ -1314,10 +1315,10 @@ Print a string
 
 Print a string with alignment formatting
 
-[%header,cols="20,^10,^10,^10,^10,^10,^10"]
+[%header,cols="30,^10,^10,^10,^10,^10,^10"]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1. strf**
+| **1.** `strf::to_string(...)`
 |`{to_string_ho_msvc_b4}`
 |`{to_string_st_msvc_b4}`
 |`{to_string_ho_gcc_b4}`
@@ -1325,7 +1326,7 @@ Print a string with alignment formatting
 |`{to_string_ho_clang_b4}`
 |`{to_string_st_clang_b4}`
 
-| **2. strf** (`tr`)
+| **2.** `strf::to_string.tr(...)`
 |`{to_string_ho_msvc_c4}`
 |`{to_string_st_msvc_c4}`
 |`{to_string_ho_gcc_c4}`
@@ -1333,7 +1334,7 @@ Print a string with alignment formatting
 |`{to_string_ho_clang_c4}`
 |`{to_string_st_clang_c4}`
 
-| **3. {fmt}** (`FMT_COMPILE`)
+| **3.** `fmt::format(FMT_COMPILE(...), ...)`
 |`{to_string_ho_msvc_d4}`
 |`{to_string_st_msvc_d4}`
 |`{to_string_ho_gcc_d4}`
@@ -1341,7 +1342,7 @@ Print a string with alignment formatting
 |`{to_string_ho_clang_d4}`
 |`{to_string_st_clang_d4}`
 
-| **4. {fmt}**
+| **4.** `fmt::format("...", ...)`
 |`{to_string_ho_msvc_e4}`
 |`{to_string_st_msvc_e4}`
 |`{to_string_ho_gcc_e4}`
@@ -1359,10 +1360,10 @@ Print a string with alignment formatting
 
 Print integers without formatting
 
-[%header,cols="20,^10,^10,^10,^10,^10,^10"]
+[%header,cols="30,^10,^10,^10,^10,^10,^10"]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1. strf**
+| **1.** `strf::to_string(...)`
 |`{to_string_ho_msvc_b5}`
 |`{to_string_st_msvc_b5}`
 |`{to_string_ho_gcc_b5}`
@@ -1370,7 +1371,7 @@ Print integers without formatting
 |`{to_string_ho_clang_b5}`
 |`{to_string_st_clang_b5}`
 
-| **2. strf** (`tr`)
+| **2.** `strf::to_string.tr(...)`
 |`{to_string_ho_msvc_c5}`
 |`{to_string_st_msvc_c5}`
 |`{to_string_ho_gcc_c5}`
@@ -1378,7 +1379,7 @@ Print integers without formatting
 |`{to_string_ho_clang_c5}`
 |`{to_string_st_clang_c5}`
 
-| **3. {fmt}** (`FMT_COMPILE`)
+| **3.** `fmt::format(FMT_COMPILE(...), ...)`
 |`{to_string_ho_msvc_d5}`
 |`{to_string_st_msvc_d5}`
 |`{to_string_ho_gcc_d5}`
@@ -1386,7 +1387,7 @@ Print integers without formatting
 |`{to_string_ho_clang_d5}`
 |`{to_string_st_clang_d5}`
 
-| **4. {fmt}**
+| **4.** `fmt::format("...", ...)`
 |`{to_string_ho_msvc_e5}`
 |`{to_string_st_msvc_e5}`
 |`{to_string_ho_gcc_e5}`
@@ -1404,10 +1405,10 @@ Print integers without formatting
 
 Print integers with some basic formatting
 
-[%header,cols="20,^10,^10,^10,^10,^10,^10"]
+[%header,cols="30,^10,^10,^10,^10,^10,^10"]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1. strf**
+| **1.** `strf::to_string(...)`
 |`{to_string_ho_msvc_b6}`
 |`{to_string_st_msvc_b6}`
 |`{to_string_ho_gcc_b6}`
@@ -1415,7 +1416,7 @@ Print integers with some basic formatting
 |`{to_string_ho_clang_b6}`
 |`{to_string_st_clang_b6}`
 
-| **2. strf** (`tr`)
+| **2.** `strf::to_string.tr(...)`
 |`{to_string_ho_msvc_c6}`
 |`{to_string_st_msvc_c6}`
 |`{to_string_ho_gcc_c6}`
@@ -1423,7 +1424,7 @@ Print integers with some basic formatting
 |`{to_string_ho_clang_c6}`
 |`{to_string_st_clang_c6}`
 
-| **3. {fmt}** (`FMT_COMPILE`)
+| **3.** `fmt::format(FMT_COMPILE(...), ...)`
 |`{to_string_ho_msvc_d6}`
 |`{to_string_st_msvc_d6}`
 |`{to_string_ho_gcc_d6}`
@@ -1431,7 +1432,7 @@ Print integers with some basic formatting
 |`{to_string_ho_clang_d6}`
 |`{to_string_st_clang_d6}`
 
-| **4. {fmt}**
+| **4.** `fmt::format("...", ...)`
 |`{to_string_ho_msvc_e6}`
 |`{to_string_st_msvc_e6}`
 |`{to_string_ho_gcc_e6}`
@@ -1450,10 +1451,10 @@ Print integers with some basic formatting
 
 Print some formatted integers with alignment
 
-[%header,cols="20,^10,^10,^10,^10,^10,^10"]
+[%header,cols="30,^10,^10,^10,^10,^10,^10"]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1. strf**
+| **1.** `strf::to_string(...)`
 |`{to_string_ho_msvc_b7}`
 |`{to_string_st_msvc_b7}`
 |`{to_string_ho_gcc_b7}`
@@ -1461,7 +1462,7 @@ Print some formatted integers with alignment
 |`{to_string_ho_clang_b7}`
 |`{to_string_st_clang_b7}`
 
-| **2. strf** (`tr`)
+| **2.** `strf::to_string.tr(...)`
 |`{to_string_ho_msvc_c7}`
 |`{to_string_st_msvc_c7}`
 |`{to_string_ho_gcc_c7}`
@@ -1469,7 +1470,7 @@ Print some formatted integers with alignment
 |`{to_string_ho_clang_c7}`
 |`{to_string_st_clang_c7}`
 
-| **3. {fmt}** (`FMT_COMPILE`)
+| **3.** `fmt::format(FMT_COMPILE(...), ...)`
 |`{to_string_ho_msvc_d7}`
 |`{to_string_st_msvc_d7}`
 |`{to_string_ho_gcc_d7}`
@@ -1477,7 +1478,7 @@ Print some formatted integers with alignment
 |`{to_string_ho_clang_d7}`
 |`{to_string_st_clang_d7}`
 
-| **4. {fmt}**
+| **4.** `fmt::format("...", ...)`
 |`{to_string_ho_msvc_e7}`
 |`{to_string_st_msvc_e7}`
 |`{to_string_ho_gcc_e7}`
@@ -1495,10 +1496,10 @@ Print some formatted integers with alignment
 
 Print floating-point values without formatting
 
-[%header,cols="20,^10,^10,^10,^10,^10,^10"]
+[%header,cols="30,^10,^10,^10,^10,^10,^10"]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1. strf**
+| **1.** `strf::to_string(...)`
 |`{to_string_ho_msvc_b8}`
 |`{to_string_st_msvc_b8}`
 |`{to_string_ho_gcc_b8}`
@@ -1506,7 +1507,7 @@ Print floating-point values without formatting
 |`{to_string_ho_clang_b8}`
 |`{to_string_st_clang_b8}`
 
-| **2. strf** (`tr`)
+| **2.** `strf::to_string.tr(...)`
 |`{to_string_ho_msvc_c8}`
 |`{to_string_st_msvc_c8}`
 |`{to_string_ho_gcc_c8}`
@@ -1514,7 +1515,7 @@ Print floating-point values without formatting
 |`{to_string_ho_clang_c8}`
 |`{to_string_st_clang_c8}`
 
-| **3. {fmt}** (`FMT_COMPILE`)
+| **3.** `fmt::format(FMT_COMPILE(...), ...)`
 |`{to_string_ho_msvc_d8}`
 |`{to_string_st_msvc_d8}`
 |`{to_string_ho_gcc_d8}`
@@ -1522,7 +1523,7 @@ Print floating-point values without formatting
 |`{to_string_ho_clang_d8}`
 |`{to_string_st_clang_d8}`
 
-| **4. {fmt}**
+| **4.** `fmt::format("...", ...)`
 |`{to_string_ho_msvc_e8}`
 |`{to_string_st_msvc_e8}`
 |`{to_string_ho_gcc_e8}`
@@ -1540,10 +1541,10 @@ Print floating-point values without formatting
 
 Print floating-point values with some formatting options
 
-[%header,cols="20,^10,^10,^10,^10,^10,^10"]
+[%header,cols="30,^10,^10,^10,^10,^10,^10"]
 |===
 | | {env1} | {env2} | {env3}| {env4}| {env5} | {env6}
-| **1. strf**
+| **1.** `strf::to_string(...)`
 |`{to_string_ho_msvc_b9}`
 |`{to_string_st_msvc_b9}`
 |`{to_string_ho_gcc_b9}`
@@ -1551,7 +1552,7 @@ Print floating-point values with some formatting options
 |`{to_string_ho_clang_b9}`
 |`{to_string_st_clang_b9}`
 
-| **2. strf** (`tr`)
+| **2.** `strf::to_string.tr(...)`
 |`{to_string_ho_msvc_c9}`
 |`{to_string_st_msvc_c9}`
 |`{to_string_ho_gcc_c9}`
@@ -1559,7 +1560,7 @@ Print floating-point values with some formatting options
 |`{to_string_ho_clang_c9}`
 |`{to_string_st_clang_c9}`
 
-| **3. {fmt}** (`FMT_COMPILE`)
+| **3.** `fmt::format(FMT_COMPILE(...), ...)`
 |`{to_string_ho_msvc_d9}`
 |`{to_string_st_msvc_d9}`
 |`{to_string_ho_gcc_d9}`
@@ -1567,7 +1568,7 @@ Print floating-point values with some formatting options
 |`{to_string_ho_clang_d9}`
 |`{to_string_st_clang_d9}`
 
-| **4. {fmt}**
+| **4.** `fmt::format("...", ...)`
 |`{to_string_ho_msvc_e9}`
 |`{to_string_st_msvc_e9}`
 |`{to_string_ho_gcc_e9}`
