@@ -110,8 +110,8 @@ int main(int argc, char** argv)
     BM2(, fmt::format_to(dest, FMT_COMPILE("{:a}"), pi)
         , "fmt::format_to(dest, FMT_COMPILE(\"{:a}\"), pi)");
 
-    BM2(, fmt::format_to(dest, FMT_COMPILE("{:}"), 1.11e+50)
-        , "fmt::format_to(dest, FMT_COMPILE(\"{:}\"), 1.11e+50)");
+    BM2(, fmt::format_to(dest, FMT_COMPILE("{}"), 1.11e+50)
+        , "fmt::format_to(dest, FMT_COMPILE(\"{}\"), 1.11e+50)");
     BM2(, fmt::format_to(dest, FMT_COMPILE("{:+}"), 1.11e+50)
         , "fmt::format_to(dest, FMT_COMPILE(\"{:+}\"), 1.11e+50)");
     BM2(, fmt::format_to(dest, FMT_COMPILE("{:+020}"), 1.11e+50)
