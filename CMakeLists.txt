@@ -23,7 +23,7 @@ option(BENCHMARK_ENABLE_GTEST_TESTS OFF)
 add_subdirectory(external/google-benchmark google-benchmark)
 add_subdirectory(external/fmt fmt)
 add_subdirectory(external/strf strf)
-
+add_subdirectory(tools)
 
 foreach(
     x
