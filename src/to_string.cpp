@@ -38,7 +38,7 @@
 #define FIXTURE_STR std::string str = "blah blah blah blah blah ";
 
 #define FIXTURE_U8SAMPLE  auto u8sample = std::string(500, 'A');
-#define FIXTURE_U16SAMPLE auto u16sample = std::string(500, 'A');
+#define FIXTURE_U16SAMPLE auto u16sample = std::string(500, u'A');
 
 // static void u8_to_u16_buff(benchmark::State& state)
 // {
