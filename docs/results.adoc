@@ -5,7 +5,7 @@ See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt
 ////
 
-= Benchmarks - Strf ( version 0.15.3 )
+= Benchmarks - Strf ( version 0.16.0 )
 :source-highlighter: prettify
 :sectnums:
 :sectnumlevels: 0
@@ -28,7 +28,7 @@ h| VS/ho     | header-only  .2+| Visual Studio 2019 .2+| Windows 10
 h| VS/s      |  static
 h| GCC/ho    | header-only  .2+|  GCC 11.1.0 .4+| Ubuntu 20.04
 h| GCC/s     |  static
-h| Clang/ho  | header-only  .2+| Clang 12.0.0
+h| Clang/ho  | header-only  .2+| Clang 13.0.0
 h| Clang/s   |  static
 |===
 
@@ -73,305 +73,391 @@ cmake --build . --target to_string-header-only
 `strf` &#x2715; `{fmt}` &#x2715; `sprintf`
 ////
 
-:to_char_ptr_ho_msvc_a1:  13.6 ns
-:to_char_ptr_ho_msvc_a2:   103 ns
-:to_char_ptr_ho_msvc_a3:  24.7 ns
-:to_char_ptr_ho_msvc_a4:    41 ns
-:to_char_ptr_ho_msvc_a5:  68.6 ns
-:to_char_ptr_ho_msvc_a6:   144 ns
-:to_char_ptr_ho_msvc_a7:   149 ns
-:to_char_ptr_ho_msvc_b1:  23.4 ns
-:to_char_ptr_ho_msvc_b2:   122 ns
-:to_char_ptr_ho_msvc_b3:  44.5 ns
-:to_char_ptr_ho_msvc_b4:  68.6 ns
-:to_char_ptr_ho_msvc_b5:  97.6 ns
-:to_char_ptr_ho_msvc_b6:   152 ns
-:to_char_ptr_ho_msvc_b7:   210 ns
-:to_char_ptr_ho_msvc_c1:  6.21 ns
-:to_char_ptr_ho_msvc_c2:   269 ns
-:to_char_ptr_ho_msvc_c3:  11.4 ns
-:to_char_ptr_ho_msvc_c4:  69.5 ns
-:to_char_ptr_ho_msvc_c5:  79.9 ns
-:to_char_ptr_ho_msvc_c6:   227 ns
-:to_char_ptr_ho_msvc_c7:   474 ns
-:to_char_ptr_ho_msvc_d1:   205 ns
-:to_char_ptr_ho_msvc_d2:   574 ns
-:to_char_ptr_ho_msvc_d3:   206 ns
-:to_char_ptr_ho_msvc_d4:   279 ns
-:to_char_ptr_ho_msvc_d5:   436 ns
-:to_char_ptr_ho_msvc_d6:   432 ns
-:to_char_ptr_ho_msvc_d7:   825 ns
-:to_char_ptr_ho_msvc_e1:    40 ns
-:to_char_ptr_ho_msvc_e2:   341 ns
-:to_char_ptr_ho_msvc_e3:  83.3 ns
-:to_char_ptr_ho_msvc_e4:   143 ns
-:to_char_ptr_ho_msvc_e5:   195 ns
-:to_char_ptr_ho_msvc_e6:   317 ns
-:to_char_ptr_ho_msvc_e7:   628 ns
-:to_char_ptr_ho_msvc_f1:  62.7 ns
-:to_char_ptr_ho_msvc_f2:   367 ns
-:to_char_ptr_ho_msvc_f3:   106 ns
-:to_char_ptr_ho_msvc_f4:   162 ns
-:to_char_ptr_ho_msvc_f5:   228 ns
-:to_char_ptr_ho_msvc_f6:   345 ns
-:to_char_ptr_ho_msvc_f7:   656 ns
-:to_char_ptr_ho_msvc_g1:  77.6 ns
-:to_char_ptr_ho_msvc_g2:   170 ns
-:to_char_ptr_ho_msvc_g3:   159 ns
-:to_char_ptr_ho_msvc_g4:   163 ns
-:to_char_ptr_ho_msvc_g5:   319 ns
-:to_char_ptr_ho_msvc_g6:   882 ns
-:to_char_ptr_ho_msvc_g7:  1025 ns
+:to_char_ptr_ho_msvc_a1:
+:to_char_ptr_ho_msvc_a2:
+:to_char_ptr_ho_msvc_a3:
+:to_char_ptr_ho_msvc_a4:
+:to_char_ptr_ho_msvc_a5:
+:to_char_ptr_ho_msvc_a6:
+:to_char_ptr_ho_msvc_a7:
+:to_char_ptr_ho_msvc_b1:
+:to_char_ptr_ho_msvc_b2:
+:to_char_ptr_ho_msvc_b3:
+:to_char_ptr_ho_msvc_b4:
+:to_char_ptr_ho_msvc_b5:
+:to_char_ptr_ho_msvc_b6:
+:to_char_ptr_ho_msvc_b7:
+:to_char_ptr_ho_msvc_c1:
+:to_char_ptr_ho_msvc_c2:
+:to_char_ptr_ho_msvc_c3:
+:to_char_ptr_ho_msvc_c4:
+:to_char_ptr_ho_msvc_c5:
+:to_char_ptr_ho_msvc_c6:
+:to_char_ptr_ho_msvc_c7:
+:to_char_ptr_ho_msvc_d1:
+:to_char_ptr_ho_msvc_d2:
+:to_char_ptr_ho_msvc_d3:
+:to_char_ptr_ho_msvc_d4:
+:to_char_ptr_ho_msvc_d5:
+:to_char_ptr_ho_msvc_d6:
+:to_char_ptr_ho_msvc_d7:
+:to_char_ptr_ho_msvc_e1:
+:to_char_ptr_ho_msvc_e2:
+:to_char_ptr_ho_msvc_e3:
+:to_char_ptr_ho_msvc_e4:
+:to_char_ptr_ho_msvc_e5:
+:to_char_ptr_ho_msvc_e6:
+:to_char_ptr_ho_msvc_e7:
+:to_char_ptr_ho_msvc_f1:
+:to_char_ptr_ho_msvc_f2:
+:to_char_ptr_ho_msvc_f3:
+:to_char_ptr_ho_msvc_f4:
+:to_char_ptr_ho_msvc_f5:
+:to_char_ptr_ho_msvc_f6:
+:to_char_ptr_ho_msvc_f7:
+:to_char_ptr_ho_msvc_g1:
+:to_char_ptr_ho_msvc_g2:
+:to_char_ptr_ho_msvc_g3:
+:to_char_ptr_ho_msvc_g4:
+:to_char_ptr_ho_msvc_g5:
+:to_char_ptr_ho_msvc_g6:
+:to_char_ptr_ho_msvc_g7:
+:to_char_ptr_ho_msvc_h1:
+:to_char_ptr_ho_msvc_h2:
+:to_char_ptr_ho_msvc_h3:
+:to_char_ptr_ho_msvc_h4:
+:to_char_ptr_ho_msvc_h5:
+:to_char_ptr_ho_msvc_h6:
+:to_char_ptr_ho_msvc_h7:
+:to_char_ptr_ho_msvc_i1:
+:to_char_ptr_ho_msvc_i2:
+:to_char_ptr_ho_msvc_i3:
+:to_char_ptr_ho_msvc_i4:
+:to_char_ptr_ho_msvc_i5:
+:to_char_ptr_ho_msvc_i6:
+:to_char_ptr_ho_msvc_i7:
 
-:to_char_ptr_st_msvc_a1:   13.6 ns
-:to_char_ptr_st_msvc_a2:   90.3 ns
-:to_char_ptr_st_msvc_a3:   24.8 ns
-:to_char_ptr_st_msvc_a4:   40.8 ns
-:to_char_ptr_st_msvc_a5:   70.8 ns
-:to_char_ptr_st_msvc_a6:    103 ns
-:to_char_ptr_st_msvc_a7:    159 ns
-:to_char_ptr_st_msvc_b1:   23.5 ns
-:to_char_ptr_st_msvc_b2:    103 ns
-:to_char_ptr_st_msvc_b3:     45 ns
-:to_char_ptr_st_msvc_b4:   67.1 ns
-:to_char_ptr_st_msvc_b5:    102 ns
-:to_char_ptr_st_msvc_b6:    114 ns
-:to_char_ptr_st_msvc_b7:    217 ns
-:to_char_ptr_st_msvc_c1:    6.6 ns
-:to_char_ptr_st_msvc_c2:    267 ns
-:to_char_ptr_st_msvc_c3:   11.3 ns
-:to_char_ptr_st_msvc_c4:   70.1 ns
-:to_char_ptr_st_msvc_c5:   79.6 ns
-:to_char_ptr_st_msvc_c6:    230 ns
-:to_char_ptr_st_msvc_c7:    473 ns
-:to_char_ptr_st_msvc_d1:    205 ns
-:to_char_ptr_st_msvc_d2:    560 ns
-:to_char_ptr_st_msvc_d3:    203 ns
-:to_char_ptr_st_msvc_d4:    281 ns
-:to_char_ptr_st_msvc_d5:    439 ns
-:to_char_ptr_st_msvc_d6:    429 ns
-:to_char_ptr_st_msvc_d7:    838 ns
-:to_char_ptr_st_msvc_e1:   37.9 ns
-:to_char_ptr_st_msvc_e2:    322 ns
-:to_char_ptr_st_msvc_e3:   75.2 ns
-:to_char_ptr_st_msvc_e4:    126 ns
-:to_char_ptr_st_msvc_e5:    193 ns
-:to_char_ptr_st_msvc_e6:    318 ns
-:to_char_ptr_st_msvc_e7:    618 ns
-:to_char_ptr_st_msvc_f1:     61 ns
-:to_char_ptr_st_msvc_f2:    355 ns
-:to_char_ptr_st_msvc_f3:   93.4 ns
-:to_char_ptr_st_msvc_f4:    144 ns
-:to_char_ptr_st_msvc_f5:    218 ns
-:to_char_ptr_st_msvc_f6:    341 ns
-:to_char_ptr_st_msvc_f7:    645 ns
-:to_char_ptr_st_msvc_g1:   78.9 ns
-:to_char_ptr_st_msvc_g2:    174 ns
-:to_char_ptr_st_msvc_g3:    159 ns
-:to_char_ptr_st_msvc_g4:    164 ns
-:to_char_ptr_st_msvc_g5:    315 ns
-:to_char_ptr_st_msvc_g6:    882 ns
-:to_char_ptr_st_msvc_g7:   1025 ns
+:to_char_ptr_st_msvc_a1:
+:to_char_ptr_st_msvc_a2:
+:to_char_ptr_st_msvc_a3:
+:to_char_ptr_st_msvc_a4:
+:to_char_ptr_st_msvc_a5:
+:to_char_ptr_st_msvc_a6:
+:to_char_ptr_st_msvc_a7:
+:to_char_ptr_st_msvc_b1:
+:to_char_ptr_st_msvc_b2:
+:to_char_ptr_st_msvc_b3:
+:to_char_ptr_st_msvc_b4:
+:to_char_ptr_st_msvc_b5:
+:to_char_ptr_st_msvc_b6:
+:to_char_ptr_st_msvc_b7:
+:to_char_ptr_st_msvc_c1:
+:to_char_ptr_st_msvc_c2:
+:to_char_ptr_st_msvc_c3:
+:to_char_ptr_st_msvc_c4:
+:to_char_ptr_st_msvc_c5:
+:to_char_ptr_st_msvc_c6:
+:to_char_ptr_st_msvc_c7:
+:to_char_ptr_st_msvc_d1:
+:to_char_ptr_st_msvc_d2:
+:to_char_ptr_st_msvc_d3:
+:to_char_ptr_st_msvc_d4:
+:to_char_ptr_st_msvc_d5:
+:to_char_ptr_st_msvc_d6:
+:to_char_ptr_st_msvc_d7:
+:to_char_ptr_st_msvc_e1:
+:to_char_ptr_st_msvc_e2:
+:to_char_ptr_st_msvc_e3:
+:to_char_ptr_st_msvc_e4:
+:to_char_ptr_st_msvc_e5:
+:to_char_ptr_st_msvc_e6:
+:to_char_ptr_st_msvc_e7:
+:to_char_ptr_st_msvc_f1:
+:to_char_ptr_st_msvc_f2:
+:to_char_ptr_st_msvc_f3:
+:to_char_ptr_st_msvc_f4:
+:to_char_ptr_st_msvc_f5:
+:to_char_ptr_st_msvc_f6:
+:to_char_ptr_st_msvc_f7:
+:to_char_ptr_st_msvc_g1:
+:to_char_ptr_st_msvc_g2:
+:to_char_ptr_st_msvc_g3:
+:to_char_ptr_st_msvc_g4:
+:to_char_ptr_st_msvc_g5:
+:to_char_ptr_st_msvc_g6:
+:to_char_ptr_st_msvc_g7:
+:to_char_ptr_st_msvc_h1:
+:to_char_ptr_st_msvc_h2:
+:to_char_ptr_st_msvc_h3:
+:to_char_ptr_st_msvc_h4:
+:to_char_ptr_st_msvc_h5:
+:to_char_ptr_st_msvc_h6:
+:to_char_ptr_st_msvc_h7:
+:to_char_ptr_st_msvc_i1:
+:to_char_ptr_st_msvc_i2:
+:to_char_ptr_st_msvc_i3:
+:to_char_ptr_st_msvc_i4:
+:to_char_ptr_st_msvc_i5:
+:to_char_ptr_st_msvc_i6:
+:to_char_ptr_st_msvc_i7:
 
-:to_char_ptr_ho_gcc_a1:  10.6 ns
-:to_char_ptr_ho_gcc_a2:  83.2 ns
-:to_char_ptr_ho_gcc_a3:    14 ns
-:to_char_ptr_ho_gcc_a4:  16.3 ns
-:to_char_ptr_ho_gcc_a5:  21.6 ns
-:to_char_ptr_ho_gcc_a6:  65.5 ns
-:to_char_ptr_ho_gcc_a7:   112 ns
-:to_char_ptr_ho_gcc_b1:  19.8 ns
-:to_char_ptr_ho_gcc_b2:  95.5 ns
-:to_char_ptr_ho_gcc_b3:  34.5 ns
-:to_char_ptr_ho_gcc_b4:  33.3 ns
-:to_char_ptr_ho_gcc_b5:  45.7 ns
-:to_char_ptr_ho_gcc_b6:   105 ns
-:to_char_ptr_ho_gcc_b7:   157 ns
-:to_char_ptr_ho_gcc_c1:  13.1 ns
-:to_char_ptr_ho_gcc_c2:   160 ns
-:to_char_ptr_ho_gcc_c3:  13.3 ns
-:to_char_ptr_ho_gcc_c4:  37.5 ns
-:to_char_ptr_ho_gcc_c5:  55.3 ns
-:to_char_ptr_ho_gcc_c6:  99.7 ns
-:to_char_ptr_ho_gcc_c7:   317 ns
-:to_char_ptr_ho_gcc_d1:  80.5 ns
-:to_char_ptr_ho_gcc_d2:   241 ns
-:to_char_ptr_ho_gcc_d3:   127 ns
-:to_char_ptr_ho_gcc_d4:   191 ns
-:to_char_ptr_ho_gcc_d5:   267 ns
-:to_char_ptr_ho_gcc_d6:   267 ns
-:to_char_ptr_ho_gcc_d7:   532 ns
-:to_char_ptr_ho_gcc_e1:  28.9 ns
-:to_char_ptr_ho_gcc_e2:   204 ns
-:to_char_ptr_ho_gcc_e3:  46.3 ns
-:to_char_ptr_ho_gcc_e4:  89.7 ns
-:to_char_ptr_ho_gcc_e5:   150 ns
-:to_char_ptr_ho_gcc_e6:   165 ns
-:to_char_ptr_ho_gcc_e7:   441 ns
-:to_char_ptr_ho_gcc_f1:  32.6 ns
-:to_char_ptr_ho_gcc_f2:   211 ns
-:to_char_ptr_ho_gcc_f3:  56.1 ns
-:to_char_ptr_ho_gcc_f4:  98.9 ns
-:to_char_ptr_ho_gcc_f5:   157 ns
-:to_char_ptr_ho_gcc_f6:   179 ns
-:to_char_ptr_ho_gcc_f7:   459 ns
-:to_char_ptr_ho_gcc_g1:  63.9 ns
-:to_char_ptr_ho_gcc_g2:  88.1 ns
-:to_char_ptr_ho_gcc_g3:   118 ns
-:to_char_ptr_ho_gcc_g4:   121 ns
-:to_char_ptr_ho_gcc_g5:   166 ns
-:to_char_ptr_ho_gcc_g6:   738 ns
-:to_char_ptr_ho_gcc_g7:   863 ns
+:to_char_ptr_ho_gcc_a1: 11.4 ns
+:to_char_ptr_ho_gcc_a2: 76.1 ns
+:to_char_ptr_ho_gcc_a3:   14 ns
+:to_char_ptr_ho_gcc_a4: 16.2 ns
+:to_char_ptr_ho_gcc_a5:   22 ns
+:to_char_ptr_ho_gcc_a6: 79.3 ns
+:to_char_ptr_ho_gcc_a7:  108 ns
+:to_char_ptr_ho_gcc_b1: 20.3 ns
+:to_char_ptr_ho_gcc_b2: 97.9 ns
+:to_char_ptr_ho_gcc_b3:   34 ns
+:to_char_ptr_ho_gcc_b4: 33.1 ns
+:to_char_ptr_ho_gcc_b5: 45.2 ns
+:to_char_ptr_ho_gcc_b6:  103 ns
+:to_char_ptr_ho_gcc_b7:  145 ns
+:to_char_ptr_ho_gcc_c1: 12.3 ns
+:to_char_ptr_ho_gcc_c2:  162 ns
+:to_char_ptr_ho_gcc_c3: 13.4 ns
+:to_char_ptr_ho_gcc_c4: 36.9 ns
+:to_char_ptr_ho_gcc_c5: 56.3 ns
+:to_char_ptr_ho_gcc_c6: 96.3 ns
+:to_char_ptr_ho_gcc_c7:  326 ns
+:to_char_ptr_ho_gcc_d1: 31.1 ns
+:to_char_ptr_ho_gcc_d2:  206 ns
+:to_char_ptr_ho_gcc_d3: 50.6 ns
+:to_char_ptr_ho_gcc_d4:  100 ns
+:to_char_ptr_ho_gcc_d5:  145 ns
+:to_char_ptr_ho_gcc_d6:  171 ns
+:to_char_ptr_ho_gcc_d7:  447 ns
+:to_char_ptr_ho_gcc_e1: 80.1 ns
+:to_char_ptr_ho_gcc_e2:  256 ns
+:to_char_ptr_ho_gcc_e3:  128 ns
+:to_char_ptr_ho_gcc_e4:  190 ns
+:to_char_ptr_ho_gcc_e5:  265 ns
+:to_char_ptr_ho_gcc_e6:  266 ns
+:to_char_ptr_ho_gcc_e7:  525 ns
+:to_char_ptr_ho_gcc_f1: 35.1 ns
+:to_char_ptr_ho_gcc_f2:  218 ns
+:to_char_ptr_ho_gcc_f3: 67.3 ns
+:to_char_ptr_ho_gcc_f4:  105 ns
+:to_char_ptr_ho_gcc_f5:  153 ns
+:to_char_ptr_ho_gcc_f6:  180 ns
+:to_char_ptr_ho_gcc_f7:  457 ns
+:to_char_ptr_ho_gcc_g1:   41 ns
+:to_char_ptr_ho_gcc_g2:  206 ns
+:to_char_ptr_ho_gcc_g3: 40.3 ns
+:to_char_ptr_ho_gcc_g4: 62.9 ns
+:to_char_ptr_ho_gcc_g5: 92.5 ns
+:to_char_ptr_ho_gcc_g6:  125 ns
+:to_char_ptr_ho_gcc_g7:  375 ns
+:to_char_ptr_ho_gcc_h1: 59.7 ns
+:to_char_ptr_ho_gcc_h2:  251 ns
+:to_char_ptr_ho_gcc_h3: 77.5 ns
+:to_char_ptr_ho_gcc_h4:  128 ns
+:to_char_ptr_ho_gcc_h5:  204 ns
+:to_char_ptr_ho_gcc_h6:  207 ns
+:to_char_ptr_ho_gcc_h7:  507 ns
+:to_char_ptr_ho_gcc_i1: 63.6 ns
+:to_char_ptr_ho_gcc_i2: 89.3 ns
+:to_char_ptr_ho_gcc_i3:  114 ns
+:to_char_ptr_ho_gcc_i4:  120 ns
+:to_char_ptr_ho_gcc_i5:  164 ns
+:to_char_ptr_ho_gcc_i6:  737 ns
+:to_char_ptr_ho_gcc_i7:  863 ns
 
-:to_char_ptr_st_gcc_a1:  10.7 ns
-:to_char_ptr_st_gcc_a2:  67.7 ns
-:to_char_ptr_st_gcc_a3:  19.5 ns
-:to_char_ptr_st_gcc_a4:  16.2 ns
-:to_char_ptr_st_gcc_a5:  37.3 ns
-:to_char_ptr_st_gcc_a6:  72.4 ns
-:to_char_ptr_st_gcc_a7:   123 ns
-:to_char_ptr_st_gcc_b1:    19 ns
-:to_char_ptr_st_gcc_b2:   109 ns
-:to_char_ptr_st_gcc_b3:  34.5 ns
-:to_char_ptr_st_gcc_b4:  33.2 ns
-:to_char_ptr_st_gcc_b5:  84.7 ns
-:to_char_ptr_st_gcc_b6:  89.9 ns
-:to_char_ptr_st_gcc_b7:   157 ns
-:to_char_ptr_st_gcc_c1:  12.9 ns
-:to_char_ptr_st_gcc_c2:   159 ns
-:to_char_ptr_st_gcc_c3:  13.4 ns
-:to_char_ptr_st_gcc_c4:  37.2 ns
-:to_char_ptr_st_gcc_c5:  54.4 ns
-:to_char_ptr_st_gcc_c6:    96 ns
-:to_char_ptr_st_gcc_c7:   313 ns
-:to_char_ptr_st_gcc_d1:  80.9 ns
-:to_char_ptr_st_gcc_d2:   257 ns
-:to_char_ptr_st_gcc_d3:   127 ns
-:to_char_ptr_st_gcc_d4:   193 ns
-:to_char_ptr_st_gcc_d5:   266 ns
-:to_char_ptr_st_gcc_d6:   264 ns
-:to_char_ptr_st_gcc_d7:   524 ns
-:to_char_ptr_st_gcc_e1:  27.2 ns
-:to_char_ptr_st_gcc_e2:   226 ns
-:to_char_ptr_st_gcc_e3:  45.5 ns
-:to_char_ptr_st_gcc_e4:  90.4 ns
-:to_char_ptr_st_gcc_e5:   137 ns
-:to_char_ptr_st_gcc_e6:   165 ns
-:to_char_ptr_st_gcc_e7:   449 ns
-:to_char_ptr_st_gcc_f1:  31.2 ns
-:to_char_ptr_st_gcc_f2:   231 ns
-:to_char_ptr_st_gcc_f3:  52.7 ns
-:to_char_ptr_st_gcc_f4:  97.5 ns
-:to_char_ptr_st_gcc_f5:   149 ns
-:to_char_ptr_st_gcc_f6:   173 ns
-:to_char_ptr_st_gcc_f7:   457 ns
-:to_char_ptr_st_gcc_g1:  64.5 ns
-:to_char_ptr_st_gcc_g2:  86.8 ns
-:to_char_ptr_st_gcc_g3:   118 ns
-:to_char_ptr_st_gcc_g4:   121 ns
-:to_char_ptr_st_gcc_g5:   166 ns
-:to_char_ptr_st_gcc_g6:   737 ns
-:to_char_ptr_st_gcc_g7:   862 ns
+:to_char_ptr_st_gcc_a1: 10.6 ns
+:to_char_ptr_st_gcc_a2: 66.8 ns
+:to_char_ptr_st_gcc_a3: 19.4 ns
+:to_char_ptr_st_gcc_a4: 16.3 ns
+:to_char_ptr_st_gcc_a5: 36.9 ns
+:to_char_ptr_st_gcc_a6: 73.6 ns
+:to_char_ptr_st_gcc_a7:  122 ns
+:to_char_ptr_st_gcc_b1: 19.3 ns
+:to_char_ptr_st_gcc_b2: 98.8 ns
+:to_char_ptr_st_gcc_b3: 34.4 ns
+:to_char_ptr_st_gcc_b4: 33.2 ns
+:to_char_ptr_st_gcc_b5: 56.3 ns
+:to_char_ptr_st_gcc_b6: 92.6 ns
+:to_char_ptr_st_gcc_b7:  144 ns
+:to_char_ptr_st_gcc_c1: 12.7 ns
+:to_char_ptr_st_gcc_c2:  159 ns
+:to_char_ptr_st_gcc_c3: 13.4 ns
+:to_char_ptr_st_gcc_c4: 37.3 ns
+:to_char_ptr_st_gcc_c5: 54.6 ns
+:to_char_ptr_st_gcc_c6:  116 ns
+:to_char_ptr_st_gcc_c7:  333 ns
+:to_char_ptr_st_gcc_d1: 28.2 ns
+:to_char_ptr_st_gcc_d2:  203 ns
+:to_char_ptr_st_gcc_d3: 48.5 ns
+:to_char_ptr_st_gcc_d4: 96.8 ns
+:to_char_ptr_st_gcc_d5:  150 ns
+:to_char_ptr_st_gcc_d6:  181 ns
+:to_char_ptr_st_gcc_d7:  457 ns
+:to_char_ptr_st_gcc_e1: 80.3 ns
+:to_char_ptr_st_gcc_e2:  243 ns
+:to_char_ptr_st_gcc_e3:  127 ns
+:to_char_ptr_st_gcc_e4:  191 ns
+:to_char_ptr_st_gcc_e5:  267 ns
+:to_char_ptr_st_gcc_e6:  263 ns
+:to_char_ptr_st_gcc_e7:  540 ns
+:to_char_ptr_st_gcc_f1: 33.1 ns
+:to_char_ptr_st_gcc_f2:  216 ns
+:to_char_ptr_st_gcc_f3: 54.6 ns
+:to_char_ptr_st_gcc_f4:  103 ns
+:to_char_ptr_st_gcc_f5:  160 ns
+:to_char_ptr_st_gcc_f6:  196 ns
+:to_char_ptr_st_gcc_f7:  470 ns
+:to_char_ptr_st_gcc_g1:   41 ns
+:to_char_ptr_st_gcc_g2:  208 ns
+:to_char_ptr_st_gcc_g3: 40.2 ns
+:to_char_ptr_st_gcc_g4:   63 ns
+:to_char_ptr_st_gcc_g5: 92.5 ns
+:to_char_ptr_st_gcc_g6:  135 ns
+:to_char_ptr_st_gcc_g7:  353 ns
+:to_char_ptr_st_gcc_h1: 60.1 ns
+:to_char_ptr_st_gcc_h2:  252 ns
+:to_char_ptr_st_gcc_h3: 76.4 ns
+:to_char_ptr_st_gcc_h4:  121 ns
+:to_char_ptr_st_gcc_h5:  204 ns
+:to_char_ptr_st_gcc_h6:  220 ns
+:to_char_ptr_st_gcc_h7:  518 ns
+:to_char_ptr_st_gcc_i1: 64.9 ns
+:to_char_ptr_st_gcc_i2: 87.8 ns
+:to_char_ptr_st_gcc_i3:  114 ns
+:to_char_ptr_st_gcc_i4:  117 ns
+:to_char_ptr_st_gcc_i5:  163 ns
+:to_char_ptr_st_gcc_i6:  737 ns
+:to_char_ptr_st_gcc_i7:  861 ns
 
-:to_char_ptr_ho_clang_a1:  3.76 ns
-:to_char_ptr_ho_clang_a2:  74.1 ns
-:to_char_ptr_ho_clang_a3:  22.3 ns
-:to_char_ptr_ho_clang_a4:    25 ns
-:to_char_ptr_ho_clang_a5:  45.6 ns
-:to_char_ptr_ho_clang_a6:  73.4 ns
-:to_char_ptr_ho_clang_a7:   113 ns
-:to_char_ptr_ho_clang_b1:  18.6 ns
-:to_char_ptr_ho_clang_b2:  78.4 ns
-:to_char_ptr_ho_clang_b3:  33.9 ns
-:to_char_ptr_ho_clang_b4:  34.5 ns
-:to_char_ptr_ho_clang_b5:  50.7 ns
-:to_char_ptr_ho_clang_b6:    89 ns
-:to_char_ptr_ho_clang_b7:   148 ns
-:to_char_ptr_ho_clang_c1:  11.2 ns
-:to_char_ptr_ho_clang_c2:   151 ns
-:to_char_ptr_ho_clang_c3:  10.9 ns
-:to_char_ptr_ho_clang_c4:  27.1 ns
-:to_char_ptr_ho_clang_c5:  45.1 ns
-:to_char_ptr_ho_clang_c6:  96.7 ns
-:to_char_ptr_ho_clang_c7:   332 ns
-:to_char_ptr_ho_clang_d1:  74.1 ns
-:to_char_ptr_ho_clang_d2:   216 ns
-:to_char_ptr_ho_clang_d3:   160 ns
-:to_char_ptr_ho_clang_d4:   180 ns
-:to_char_ptr_ho_clang_d5:   205 ns
-:to_char_ptr_ho_clang_d6:   217 ns
-:to_char_ptr_ho_clang_d7:   479 ns
-:to_char_ptr_ho_clang_e1:  28.7 ns
-:to_char_ptr_ho_clang_e2:   198 ns
-:to_char_ptr_ho_clang_e3:  45.6 ns
-:to_char_ptr_ho_clang_e4:   104 ns
-:to_char_ptr_ho_clang_e5:   150 ns
-:to_char_ptr_ho_clang_e6:   153 ns
-:to_char_ptr_ho_clang_e7:   467 ns
-:to_char_ptr_ho_clang_f1:  33.8 ns
-:to_char_ptr_ho_clang_f2:   211 ns
-:to_char_ptr_ho_clang_f3:    61 ns
-:to_char_ptr_ho_clang_f4:   122 ns
-:to_char_ptr_ho_clang_f5:   171 ns
-:to_char_ptr_ho_clang_f6:   160 ns
-:to_char_ptr_ho_clang_f7:   485 ns
-:to_char_ptr_ho_clang_g1:  62.4 ns
-:to_char_ptr_ho_clang_g2:  85.7 ns
-:to_char_ptr_ho_clang_g3:   116 ns
-:to_char_ptr_ho_clang_g4:   119 ns
-:to_char_ptr_ho_clang_g5:   164 ns
-:to_char_ptr_ho_clang_g6:   735 ns
-:to_char_ptr_ho_clang_g7:   860 ns
+:to_char_ptr_ho_clang_a1: 3.38 ns
+:to_char_ptr_ho_clang_a2: 74.7 ns
+:to_char_ptr_ho_clang_a3: 22.7 ns
+:to_char_ptr_ho_clang_a4: 24.6 ns
+:to_char_ptr_ho_clang_a5: 42.9 ns
+:to_char_ptr_ho_clang_a6: 78.9 ns
+:to_char_ptr_ho_clang_a7:  121 ns
+:to_char_ptr_ho_clang_b1: 17.4 ns
+:to_char_ptr_ho_clang_b2: 79.8 ns
+:to_char_ptr_ho_clang_b3: 31.4 ns
+:to_char_ptr_ho_clang_b4: 34.9 ns
+:to_char_ptr_ho_clang_b5: 50.2 ns
+:to_char_ptr_ho_clang_b6: 90.8 ns
+:to_char_ptr_ho_clang_b7:  137 ns
+:to_char_ptr_ho_clang_c1: 12.4 ns
+:to_char_ptr_ho_clang_c2:  157 ns
+:to_char_ptr_ho_clang_c3: 11.8 ns
+:to_char_ptr_ho_clang_c4: 28.8 ns
+:to_char_ptr_ho_clang_c5: 49.3 ns
+:to_char_ptr_ho_clang_c6:   96 ns
+:to_char_ptr_ho_clang_c7:  324 ns
+:to_char_ptr_ho_clang_d1: 27.2 ns
+:to_char_ptr_ho_clang_d2:  200 ns
+:to_char_ptr_ho_clang_d3: 42.7 ns
+:to_char_ptr_ho_clang_d4: 97.9 ns
+:to_char_ptr_ho_clang_d5:  169 ns
+:to_char_ptr_ho_clang_d6:  150 ns
+:to_char_ptr_ho_clang_d7:  464 ns
+:to_char_ptr_ho_clang_e1: 85.6 ns
+:to_char_ptr_ho_clang_e2:  232 ns
+:to_char_ptr_ho_clang_e3:  145 ns
+:to_char_ptr_ho_clang_e4:  172 ns
+:to_char_ptr_ho_clang_e5:  217 ns
+:to_char_ptr_ho_clang_e6:  226 ns
+:to_char_ptr_ho_clang_e7:  478 ns
+:to_char_ptr_ho_clang_f1: 30.5 ns
+:to_char_ptr_ho_clang_f2:  211 ns
+:to_char_ptr_ho_clang_f3: 54.8 ns
+:to_char_ptr_ho_clang_f4:  111 ns
+:to_char_ptr_ho_clang_f5:  186 ns
+:to_char_ptr_ho_clang_f6:  165 ns
+:to_char_ptr_ho_clang_f7:  475 ns
+:to_char_ptr_ho_clang_g1: 42.5 ns
+:to_char_ptr_ho_clang_g2:  200 ns
+:to_char_ptr_ho_clang_g3:   50 ns
+:to_char_ptr_ho_clang_g4: 55.5 ns
+:to_char_ptr_ho_clang_g5: 86.6 ns
+:to_char_ptr_ho_clang_g6:  133 ns
+:to_char_ptr_ho_clang_g7:  365 ns
+:to_char_ptr_ho_clang_h1: 64.9 ns
+:to_char_ptr_ho_clang_h2:  252 ns
+:to_char_ptr_ho_clang_h3: 81.1 ns
+:to_char_ptr_ho_clang_h4:  136 ns
+:to_char_ptr_ho_clang_h5:  234 ns
+:to_char_ptr_ho_clang_h6:  196 ns
+:to_char_ptr_ho_clang_h7:  533 ns
+:to_char_ptr_ho_clang_i1: 63.2 ns
+:to_char_ptr_ho_clang_i2: 87.9 ns
+:to_char_ptr_ho_clang_i3:  114 ns
+:to_char_ptr_ho_clang_i4:  117 ns
+:to_char_ptr_ho_clang_i5:  161 ns
+:to_char_ptr_ho_clang_i6:  738 ns
+:to_char_ptr_ho_clang_i7:  859 ns
 
-:to_char_ptr_st_clang_a1:  3.44 ns
-:to_char_ptr_st_clang_a2:  87.4 ns
-:to_char_ptr_st_clang_a3:  25.5 ns
-:to_char_ptr_st_clang_a4:  24.1 ns
-:to_char_ptr_st_clang_a5:  47.5 ns
-:to_char_ptr_st_clang_a6:  79.5 ns
-:to_char_ptr_st_clang_a7:   136 ns
-:to_char_ptr_st_clang_b1:  16.9 ns
-:to_char_ptr_st_clang_b2:  97.1 ns
-:to_char_ptr_st_clang_b3:  31.7 ns
-:to_char_ptr_st_clang_b4:  34.3 ns
-:to_char_ptr_st_clang_b5:  52.9 ns
-:to_char_ptr_st_clang_b6:   107 ns
-:to_char_ptr_st_clang_b7:   158 ns
-:to_char_ptr_st_clang_c1:  11.2 ns
-:to_char_ptr_st_clang_c2:   151 ns
-:to_char_ptr_st_clang_c3:    11 ns
-:to_char_ptr_st_clang_c4:  28.3 ns
-:to_char_ptr_st_clang_c5:  46.9 ns
-:to_char_ptr_st_clang_c6:  96.8 ns
-:to_char_ptr_st_clang_c7:   337 ns
-:to_char_ptr_st_clang_d1:  74.4 ns
-:to_char_ptr_st_clang_d2:   216 ns
-:to_char_ptr_st_clang_d3:   160 ns
-:to_char_ptr_st_clang_d4:   184 ns
-:to_char_ptr_st_clang_d5:   209 ns
-:to_char_ptr_st_clang_d6:   214 ns
-:to_char_ptr_st_clang_d7:   494 ns
-:to_char_ptr_st_clang_e1:  25.9 ns
-:to_char_ptr_st_clang_e2:   197 ns
-:to_char_ptr_st_clang_e3:  44.5 ns
-:to_char_ptr_st_clang_e4:  94.8 ns
-:to_char_ptr_st_clang_e5:   153 ns
-:to_char_ptr_st_clang_e6:   154 ns
-:to_char_ptr_st_clang_e7:   451 ns
-:to_char_ptr_st_clang_f1:  32.1 ns
-:to_char_ptr_st_clang_f2:   208 ns
-:to_char_ptr_st_clang_f3:  57.9 ns
-:to_char_ptr_st_clang_f4:   108 ns
-:to_char_ptr_st_clang_f5:   175 ns
-:to_char_ptr_st_clang_f6:   166 ns
-:to_char_ptr_st_clang_f7:   467 ns
-:to_char_ptr_st_clang_g1:  62.8 ns
-:to_char_ptr_st_clang_g2:  87.9 ns
-:to_char_ptr_st_clang_g3:   116 ns
-:to_char_ptr_st_clang_g4:   119 ns
-:to_char_ptr_st_clang_g5:   162 ns
-:to_char_ptr_st_clang_g6:   737 ns
-:to_char_ptr_st_clang_g7:   856 ns
+
+:to_char_ptr_st_clang_a1: 3.49 ns
+:to_char_ptr_st_clang_a2: 80.5 ns
+:to_char_ptr_st_clang_a3: 25.8 ns
+:to_char_ptr_st_clang_a4: 24.1 ns
+:to_char_ptr_st_clang_a5: 46.6 ns
+:to_char_ptr_st_clang_a6: 77.4 ns
+:to_char_ptr_st_clang_a7:  137 ns
+:to_char_ptr_st_clang_b1: 18.4 ns
+:to_char_ptr_st_clang_b2: 93.7 ns
+:to_char_ptr_st_clang_b3: 32.7 ns
+:to_char_ptr_st_clang_b4:   35 ns
+:to_char_ptr_st_clang_b5: 52.7 ns
+:to_char_ptr_st_clang_b6:  103 ns
+:to_char_ptr_st_clang_b7:  163 ns
+:to_char_ptr_st_clang_c1: 13.6 ns
+:to_char_ptr_st_clang_c2:  154 ns
+:to_char_ptr_st_clang_c3: 12.4 ns
+:to_char_ptr_st_clang_c4: 31.8 ns
+:to_char_ptr_st_clang_c5: 46.6 ns
+:to_char_ptr_st_clang_c6: 95.3 ns
+:to_char_ptr_st_clang_c7:  338 ns
+:to_char_ptr_st_clang_d1: 25.5 ns
+:to_char_ptr_st_clang_d2:  206 ns
+:to_char_ptr_st_clang_d3: 42.8 ns
+:to_char_ptr_st_clang_d4: 97.3 ns
+:to_char_ptr_st_clang_d5:  146 ns
+:to_char_ptr_st_clang_d6:  149 ns
+:to_char_ptr_st_clang_d7:  460 ns
+:to_char_ptr_st_clang_e1: 85.9 ns
+:to_char_ptr_st_clang_e2:  229 ns
+:to_char_ptr_st_clang_e3:  147 ns
+:to_char_ptr_st_clang_e4:  172 ns
+:to_char_ptr_st_clang_e5:  216 ns
+:to_char_ptr_st_clang_e6:  222 ns
+:to_char_ptr_st_clang_e7:  493 ns
+:to_char_ptr_st_clang_f1: 30.8 ns
+:to_char_ptr_st_clang_f2:  218 ns
+:to_char_ptr_st_clang_f3: 56.5 ns
+:to_char_ptr_st_clang_f4:  107 ns
+:to_char_ptr_st_clang_f5:  170 ns
+:to_char_ptr_st_clang_f6:  163 ns
+:to_char_ptr_st_clang_f7:  476 ns
+:to_char_ptr_st_clang_g1: 42.5 ns
+:to_char_ptr_st_clang_g2:  199 ns
+:to_char_ptr_st_clang_g3: 49.9 ns
+:to_char_ptr_st_clang_g4: 55.2 ns
+:to_char_ptr_st_clang_g5: 88.7 ns
+:to_char_ptr_st_clang_g6:  135 ns
+:to_char_ptr_st_clang_g7:  370 ns
+:to_char_ptr_st_clang_h1: 65.4 ns
+:to_char_ptr_st_clang_h2:  265 ns
+:to_char_ptr_st_clang_h3:   80 ns
+:to_char_ptr_st_clang_h4:  133 ns
+:to_char_ptr_st_clang_h5:  209 ns
+:to_char_ptr_st_clang_h6:  196 ns
+:to_char_ptr_st_clang_h7:  526 ns
+:to_char_ptr_st_clang_i1: 63.3 ns
+:to_char_ptr_st_clang_i2: 87.8 ns
+:to_char_ptr_st_clang_i3:  118 ns
+:to_char_ptr_st_clang_i4:  119 ns
+:to_char_ptr_st_clang_i5:  161 ns
+:to_char_ptr_st_clang_i6:  736 ns
+:to_char_ptr_st_clang_i7:  862 ns
+
 
 ==== Sample 1
 
@@ -404,7 +490,7 @@ Print a string
 | `{to_char_ptr_ho_clang_c1}`
 | `{to_char_ptr_st_clang_c1}`
 
-| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
+| **4.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_d1}`
 | `{to_char_ptr_st_msvc_d1}`
 | `{to_char_ptr_ho_gcc_d1}`
@@ -412,7 +498,7 @@ Print a string
 | `{to_char_ptr_ho_clang_d1}`
 | `{to_char_ptr_st_clang_d1}`
 
-| **5.**`fmt::format_to(..., "...", ...)`
+| **5.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_e1}`
 | `{to_char_ptr_st_msvc_e1}`
 | `{to_char_ptr_ho_gcc_e1}`
@@ -428,21 +514,51 @@ Print a string
 | `{to_char_ptr_ho_clang_f1}`
 | `{to_char_ptr_st_clang_f1}`
 
-| **7.**`std::sprintf`
-|
+| **7.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+| `{to_char_ptr_ho_msvc_g1}`
 | `{to_char_ptr_st_msvc_g1}`
-|
+| `{to_char_ptr_ho_gcc_g1}`
 | `{to_char_ptr_st_gcc_g1}`
-|
+| `{to_char_ptr_ho_clang_g1}`
 | `{to_char_ptr_st_clang_g1}`
+
+| **8.** __Hybrid &#x2002;{fmt}-Strf__
+| `{to_char_ptr_ho_msvc_h1}`
+| `{to_char_ptr_st_msvc_h1}`
+| `{to_char_ptr_ho_gcc_h1}`
+| `{to_char_ptr_st_gcc_h1}`
+| `{to_char_ptr_ho_clang_h1}`
+| `{to_char_ptr_st_clang_h1}`
+
+| **9.**`std::sprintf`
+|
+| `{to_char_ptr_st_msvc_i1}`
+|
+| `{to_char_ptr_st_gcc_i1}`
+|
+| `{to_char_ptr_st_clang_i1}`
 |===
 
 . `strf::to(dest, dest_size)("Blah ", str, "!\n")`
 . `strf::to(dest, dest_size).tr("Blah {}!\n", str)`
 . `fmt::format_to(dest, FMT_COMPILE("Blah {}!\n"), str)`
-. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("Blah {}!\n"), str)`
 . `fmt::format_to(dest, "Blah {}!\n", str)`
+. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("Blah {}!\n"), str)`
 . `fmt::format_to_n(dest, dest_size, "Blah {}!\n", str)`
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+fmt::format_to(make_iterator(writer), FMT_COMPILE("Blah {}!\n"), str)
+writer.finish();
+----
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+fmt::format_to(make_iterator(writer), "Blah {}!\n", str)
+writer.finish();
+----
 . `std::sprintf(dest, "Blah %s!\n", str.c_str())`
 
 .using
@@ -484,7 +600,7 @@ Print a string with alignment formatting
 | `{to_char_ptr_ho_clang_c2}`
 | `{to_char_ptr_st_clang_c2}`
 
-| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
+| **4.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_d2}`
 | `{to_char_ptr_st_msvc_d2}`
 | `{to_char_ptr_ho_gcc_d2}`
@@ -492,7 +608,7 @@ Print a string with alignment formatting
 | `{to_char_ptr_ho_clang_d2}`
 | `{to_char_ptr_st_clang_d2}`
 
-| **5.**`fmt::format_to(..., "...", ...)`
+| **5.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_e2}`
 | `{to_char_ptr_st_msvc_e2}`
 | `{to_char_ptr_ho_gcc_e2}`
@@ -508,21 +624,51 @@ Print a string with alignment formatting
 | `{to_char_ptr_ho_clang_f2}`
 | `{to_char_ptr_st_clang_f2}`
 
-| **7.**`std::sprintf`
-|
+| **7.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+| `{to_char_ptr_ho_msvc_g2}`
 | `{to_char_ptr_st_msvc_g2}`
-|
+| `{to_char_ptr_ho_gcc_g2}`
 | `{to_char_ptr_st_gcc_g2}`
-|
+| `{to_char_ptr_ho_clang_g2}`
 | `{to_char_ptr_st_clang_g2}`
+
+| **8.** __Hybrid &#x2002;{fmt}-Strf__
+| `{to_char_ptr_ho_msvc_h2}`
+| `{to_char_ptr_st_msvc_h2}`
+| `{to_char_ptr_ho_gcc_h2}`
+| `{to_char_ptr_st_gcc_h2}`
+| `{to_char_ptr_ho_clang_h2}`
+| `{to_char_ptr_st_clang_h2}`
+
+| **9.**`std::sprintf`
+|
+| `{to_char_ptr_st_msvc_i2}`
+|
+| `{to_char_ptr_st_gcc_i2}`
+|
+| `{to_char_ptr_st_clang_i2}`
 |===
 
 . `strf::to(dest, dest_size)("Blah ", strf::right(str, 40, '.'), "!\n")`
 . `strf::to(dest, dest_size).tr("Blah {}!\n", strf::right(str, 40, '.'))`
 . `fmt::format_to(dest, FMT_COMPILE("Blah {:.>40}!\n"), str)`
-. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("Blah {:.>40}!\n"), str)`
 . `fmt::format_to(dest, "Blah {:.>40}!\n", str)`
+. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("Blah {:.>40}!\n"), str)`
 . `fmt::format_to_n(dest, dest_size, "Blah {:.>40}!\n", str)`
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+fmt::format_to(make_iterator(writer), FMT_COMPILE("Blah {:.>40}!\n"), str)
+writer.finish();
+----
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+fmt::format_to(make_iterator(writer), "Blah {:.>40}!\n", str)
+writer.finish();
+----
 . `std::sprintf(dest, "Blah %40s!\n", str.c_str())`
 
 .using
@@ -564,7 +710,7 @@ Print integer without formatting
 | `{to_char_ptr_ho_clang_c3}`
 | `{to_char_ptr_st_clang_c3}`
 
-| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
+| **4.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_d3}`
 | `{to_char_ptr_st_msvc_d3}`
 | `{to_char_ptr_ho_gcc_d3}`
@@ -572,7 +718,7 @@ Print integer without formatting
 | `{to_char_ptr_ho_clang_d3}`
 | `{to_char_ptr_st_clang_d3}`
 
-| **5.**`fmt::format_to(..., "...", ...)`
+| **5.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_e3}`
 | `{to_char_ptr_st_msvc_e3}`
 | `{to_char_ptr_ho_gcc_e3}`
@@ -588,21 +734,53 @@ Print integer without formatting
 | `{to_char_ptr_ho_clang_f3}`
 | `{to_char_ptr_st_clang_f3}`
 
-| **7.**`std::sprintf`
-|
+| **7.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+| `{to_char_ptr_ho_msvc_g3}`
 | `{to_char_ptr_st_msvc_g3}`
-|
+| `{to_char_ptr_ho_gcc_g3}`
 | `{to_char_ptr_st_gcc_g3}`
-|
+| `{to_char_ptr_ho_clang_g3}`
 | `{to_char_ptr_st_clang_g3}`
+
+| **8.** __Hybrid &#x2002;{fmt}-Strf__
+| `{to_char_ptr_ho_msvc_h3}`
+| `{to_char_ptr_st_msvc_h3}`
+| `{to_char_ptr_ho_gcc_h3}`
+| `{to_char_ptr_st_gcc_h3}`
+| `{to_char_ptr_ho_clang_h3}`
+| `{to_char_ptr_st_clang_h3}`
+
+| **9.**`std::sprintf`
+|
+| `{to_char_ptr_st_msvc_i3}`
+|
+| `{to_char_ptr_st_gcc_i3}`
+|
+| `{to_char_ptr_st_clang_i3}`
 |===
 
 . `strf::to(dest)("blah ", 123456, " blah ", 0x123456, " blah")`
 . `strf::to(dest).tr("blah {} blah {} blah", 123456, 0x123456)`
 . `fmt::format_to(dest, FMT_COMPILE("blah {} blah {} blah"), 123456, 0x123456)`
-. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("blah {} blah {} blah"), 123456, 0x123456)`
 . `fmt::format_to(dest, "blah {} blah {} blah", 123456, 0x123456)`
+. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("blah {} blah {} blah"), 123456, 0x123456)`
 . `fmt::format_to_n(dest, dest_size, "blah {} blah {} blah", 123456, 0x123456)`
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+auto it = make_iterator(writer);
+fmt::format_to(it, FMT_COMPILE("blah {} blah {} blah"), 123456, 0x123456)
+writer.finish();
+----
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+auto it = make_iterator(writer);
+fmt::format_to(it, "blah {} blah {} blah", 123456, 0x123456)
+writer.finish();
+----
 . `std::sprintf(dest, "blah %d blah %d blah", 123456, 0x123456)`
 
 .using
@@ -642,7 +820,7 @@ Print some formatted integers
 | `{to_char_ptr_ho_clang_c4}`
 | `{to_char_ptr_st_clang_c4}`
 
-| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
+| **4.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_d4}`
 | `{to_char_ptr_st_msvc_d4}`
 | `{to_char_ptr_ho_gcc_d4}`
@@ -650,7 +828,7 @@ Print some formatted integers
 | `{to_char_ptr_ho_clang_d4}`
 | `{to_char_ptr_st_clang_d4}`
 
-| **5.**`fmt::format_to(..., "...", ...)`
+| **5.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_e4}`
 | `{to_char_ptr_st_msvc_e4}`
 | `{to_char_ptr_ho_gcc_e4}`
@@ -666,21 +844,53 @@ Print some formatted integers
 | `{to_char_ptr_ho_clang_f4}`
 | `{to_char_ptr_st_clang_f4}`
 
-| **7.**`std::sprintf`
-|
+| **7.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+| `{to_char_ptr_ho_msvc_g4}`
 | `{to_char_ptr_st_msvc_g4}`
-|
+| `{to_char_ptr_ho_gcc_g4}`
 | `{to_char_ptr_st_gcc_g4}`
-|
+| `{to_char_ptr_ho_clang_g4}`
 | `{to_char_ptr_st_clang_g4}`
+
+| **8.** __Hybrid &#x2002;{fmt}-Strf__
+| `{to_char_ptr_ho_msvc_h4}`
+| `{to_char_ptr_st_msvc_h4}`
+| `{to_char_ptr_ho_gcc_h4}`
+| `{to_char_ptr_st_gcc_h4}`
+| `{to_char_ptr_ho_clang_h4}`
+| `{to_char_ptr_st_clang_h4}`
+
+| **9.**`std::sprintf`
+|
+| `{to_char_ptr_st_msvc_i4}`
+|
+| `{to_char_ptr_st_gcc_i4}`
+|
+| `{to_char_ptr_st_clang_i4}`
 |===
 
 . `strf::to(dest)("blah ", +strf::dec(123456), " blah ", *strf::hex(0x123456), " blah")`
 . `strf::to(dest).tr("blah {} blah {} blah", +strf::dec(123456), *strf::hex(0x123456))`
 . `fmt::format_to(dest, FMT_COMPILE("blah {:+} blah {:#x} blah"), 123456, 0x123456)`
-. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("blah {:+} blah {:#x} blah"), 123456, 0x123456)`
 . `fmt::format_to(dest, "blah {:+} blah {:#x} blah", 123456, 0x123456)`
+. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("blah {:+} blah {:#x} blah"), 123456, 0x123456)`
 . `fmt::format_to_n(dest, dest_size, "blah {:+} blah {:#x} blah", 123456, 0x123456)`
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+auto it = make_iterator(writer);
+fmt::format_to(it, FMT_COMPILE("blah {:+} blah {:#x} blah"), 123456, 0x123456)
+writer.finish();
+----
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+auto it = make_iterator(writer);
+fmt::format_to(it, "blah {:+} blah {:#x} blah", 123456, 0x123456)
+writer.finish();
+----
 . `std::sprintf(dest, "blah %+d blah %#x blah", 123456, 0x123456)`
 
 .using
@@ -721,7 +931,7 @@ Print some formatted integers with alignment
 | `{to_char_ptr_ho_clang_c5}`
 | `{to_char_ptr_st_clang_c5}`
 
-| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
+| **4.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_d5}`
 | `{to_char_ptr_st_msvc_d5}`
 | `{to_char_ptr_ho_gcc_d5}`
@@ -729,7 +939,7 @@ Print some formatted integers with alignment
 | `{to_char_ptr_ho_clang_d5}`
 | `{to_char_ptr_st_clang_d5}`
 
-| **5.**`fmt::format_to(..., "...", ...)`
+| **5.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_e5}`
 | `{to_char_ptr_st_msvc_e5}`
 | `{to_char_ptr_ho_gcc_e5}`
@@ -745,21 +955,53 @@ Print some formatted integers with alignment
 | `{to_char_ptr_ho_clang_f5}`
 | `{to_char_ptr_st_clang_f5}`
 
-| **7.**`std::sprintf`
-|
+| **7.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+| `{to_char_ptr_ho_msvc_g5}`
 | `{to_char_ptr_st_msvc_g5}`
-|
+| `{to_char_ptr_ho_gcc_g5}`
 | `{to_char_ptr_st_gcc_g5}`
-|
+| `{to_char_ptr_ho_clang_g5}`
 | `{to_char_ptr_st_clang_g5}`
+
+| **8.** __Hybrid &#x2002;{fmt}-Strf__
+| `{to_char_ptr_ho_msvc_h5}`
+| `{to_char_ptr_st_msvc_h5}`
+| `{to_char_ptr_ho_gcc_h5}`
+| `{to_char_ptr_st_gcc_h5}`
+| `{to_char_ptr_ho_clang_h5}`
+| `{to_char_ptr_st_clang_h5}`
+
+| **9.**`std::sprintf`
+|
+| `{to_char_ptr_st_msvc_i5}`
+|
+| `{to_char_ptr_st_gcc_i5}`
+|
+| `{to_char_ptr_st_clang_i5}`
 |===
 
 . `strf::to(dest)("blah ", +strf::right(123456, 20, '_'), " blah ", *strf::hex(0x123456)<20, " blah")`
 . `strf::to(dest).tr("blah {} blah {} blah", +strf::right(123456, 20, '_'), *strf::hex(0x123456)<20)`
 . `fmt::format_to(dest, FMT_COMPILE("blah {:_>+20} blah {:<#20x} blah"), 123456, 0x123456)`
-. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("blah {:_>+20} blah {:<#20x} blah"), 123456, 0x123456)`
 . `fmt::format_to(dest, "blah {:_>+20} blah {:<#20x} blah", 123456, 0x123456)`
+. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("blah {:_>+20} blah {:<#20x} blah"), 123456, 0x123456)`
 . `fmt::format_to_n(dest, dest_size, "blah {:_>+20} blah {:<#20x} blah", 123456, 0x123456)`
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+auto it = make_iterator(writer);
+fmt::format_to(it, FMT_COMPILE("blah {:_>+20} blah {:<#20x} blah"), 123456, 0x123456)
+writer.finish();
+----
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+auto it = make_iterator(writer);
+fmt::format_to(it, "blah {:_>+20} blah {:<#20x} blah", 123456, 0x123456)
+writer.finish();
+----
 . `std::sprintf(dest, "blah %+20d blah %#-20x blah", 123456, 0x123456)`
 
 .using
@@ -800,7 +1042,7 @@ Print floating-point values without any formatting
 | `{to_char_ptr_ho_clang_c6}`
 | `{to_char_ptr_st_clang_c6}`
 
-| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
+| **4.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_d6}`
 | `{to_char_ptr_st_msvc_d6}`
 | `{to_char_ptr_ho_gcc_d6}`
@@ -808,7 +1050,7 @@ Print floating-point values without any formatting
 | `{to_char_ptr_ho_clang_d6}`
 | `{to_char_ptr_st_clang_d6}`
 
-| **5.**`fmt::format_to(..., "...", ...)`
+| **5.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_e6}`
 | `{to_char_ptr_st_msvc_e6}`
 | `{to_char_ptr_ho_gcc_e6}`
@@ -824,21 +1066,53 @@ Print floating-point values without any formatting
 | `{to_char_ptr_ho_clang_f6}`
 | `{to_char_ptr_st_clang_f6}`
 
-| **7.**`std::sprintf`
-|
+| **7.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+| `{to_char_ptr_ho_msvc_g6}`
 | `{to_char_ptr_st_msvc_g6}`
-|
+| `{to_char_ptr_ho_gcc_g6}`
 | `{to_char_ptr_st_gcc_g6}`
-|
+| `{to_char_ptr_ho_clang_g6}`
 | `{to_char_ptr_st_clang_g6}`
+
+| **8.** __Hybrid &#x2002;{fmt}-Strf__
+| `{to_char_ptr_ho_msvc_h6}`
+| `{to_char_ptr_st_msvc_h6}`
+| `{to_char_ptr_ho_gcc_h6}`
+| `{to_char_ptr_st_gcc_h6}`
+| `{to_char_ptr_ho_clang_h6}`
+| `{to_char_ptr_st_clang_h6}`
+
+| **9.**`std::sprintf`
+|
+| `{to_char_ptr_st_msvc_i6}`
+|
+| `{to_char_ptr_st_gcc_i6}`
+|
+| `{to_char_ptr_st_clang_i6}`
 |===
 
 . `strf::to(dest, dest_size)(1.123e+5, ' ', pi, ' ', 1.11e-222)`
 . `strf::to(dest, dest_size).tr("{} {} {}", 1.123e+5, pi, 1.11e-222)`
 . `fmt::format_to(dest, FMT_COMPILE("{} {} {}"), 1.123e+5, pi, 1.11e-222)`
-. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("{} {} {}"), 1.123e+5, pi, 1.11e-222)`
 . `fmt::format_to(dest, "{} {} {}", 1.123e+5, pi, 1.11e-222)`
+. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("{} {} {}"), 1.123e+5, pi, 1.11e-222)`
 . `fmt::format_to_n(dest, dest_size, "{} {} {}", 1.123e+5, pi, 1.11e-222)`
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+auto it = make_iterator(writer);
+fmt::format_to(it, FMT_COMPILE("{} {} {}"), 1.123e+5, pi, 1.11e-222)
+writer.finish();
+----
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+auto it = make_iterator(writer);
+fmt::format_to(it, "{} {} {}", 1.123e+5, pi, 1.11e-222)
+writer.finish();
+----
 . `std::sprintf(dest, "%g %g %g", 1.123e+5, pi, 1.11e-222)`
 
 ==== Sample 7
@@ -872,7 +1146,7 @@ Print floating-point values with some formatting
 | `{to_char_ptr_ho_clang_c7}`
 | `{to_char_ptr_st_clang_c7}`
 
-| **4.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
+| **4.**`fmt::format_to(..., "...", ...)`
 | `{to_char_ptr_ho_msvc_d7}`
 | `{to_char_ptr_st_msvc_d7}`
 | `{to_char_ptr_ho_gcc_d7}`
@@ -880,7 +1154,7 @@ Print floating-point values with some formatting
 | `{to_char_ptr_ho_clang_d7}`
 | `{to_char_ptr_st_clang_d7}`
 
-| **5.**`fmt::format_to(..., "...", ...)`
+| **5.**`fmt::format_to_n(...,FMT_COMPILE(...),...)`
 | `{to_char_ptr_ho_msvc_e7}`
 | `{to_char_ptr_st_msvc_e7}`
 | `{to_char_ptr_ho_gcc_e7}`
@@ -896,261 +1170,402 @@ Print floating-point values with some formatting
 | `{to_char_ptr_ho_clang_f7}`
 | `{to_char_ptr_st_clang_f7}`
 
-| **7.**`std::sprintf`
-|
+| **7.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+| `{to_char_ptr_ho_msvc_g7}`
 | `{to_char_ptr_st_msvc_g7}`
-|
+| `{to_char_ptr_ho_gcc_g7}`
 | `{to_char_ptr_st_gcc_g7}`
-|
+| `{to_char_ptr_ho_clang_g7}`
 | `{to_char_ptr_st_clang_g7}`
+
+| **8.** __Hybrid &#x2002;{fmt}-Strf__
+| `{to_char_ptr_ho_msvc_h7}`
+| `{to_char_ptr_st_msvc_h7}`
+| `{to_char_ptr_ho_gcc_h7}`
+| `{to_char_ptr_st_gcc_h7}`
+| `{to_char_ptr_ho_clang_h7}`
+| `{to_char_ptr_st_clang_h7}`
+
+| **9.**`std::sprintf`
+|
+| `{to_char_ptr_st_msvc_i7}`
+|
+| `{to_char_ptr_st_gcc_i7}`
+|
+| `{to_char_ptr_st_clang_i7}`
 |===
 
 . `strf::to(dest, dest_size)(*fixed(1.123e+5), ' ', +fixed(pi, 8), ' ', sci(1.11e-222)>30)`
 . `strf::to_string.tr("{} {} {}", *fixed(1.123e+5), +fixed(pi, 8), sci(1.11e-222)>30)`
 . `fmt::format_to(dest, FMT_COMPILE("{:#f} {:+.8f} {:>30e}"), 1.123e+5, pi, 1.11e-222)`
-. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("{:#f} {:+.8f} {:>30e}"), 1.123e+5, pi, 1.11e-222)`
 . `fmt::format_to(dest, "{:#f} {:+.8f} {:>30e}", 1.123e+5, pi, 1.11e-222)`
+. `fmt::format_to_n(dest, dest_size, FMT_COMPILE("{:#f} {:+.8f} {:>30e}"), 1.123e+5, pi, 1.11e-222)`
 . `fmt::format_to_n(dest, dest_size, "{:#f} {:+.8f} {:>30e}", 1.123e+5, pi, 1.11e-222)`
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+auto it = make_iterator(writer);
+fmt::format_to(it, FMT_COMPILE("{:#f} {:+.8f} {:>30e}"), 1.123e+5, pi, 1.11e-222)
+writer.finish();
+----
+. {blank}
++
+----
+strf::cstr_writer writer{dest, dest_size};
+auto it = make_iterator(writer);
+fmt::format_to(it, "{:#f} {:+.8f} {:>30e}", 1.123e+5, pi, 1.11e-222)
+writer.finish();
+----
 . `std::sprintf(dest, "%#f %+.8f %30e", 1.123e+5, pi, 1.11e-222)`
 
 === Writing to `std::string`
 
-:to_string_ho_msvc_a1:  14.9 ns
-:to_string_ho_msvc_a2:   446 ns
-:to_string_ho_msvc_b1:  19.4 ns
-:to_string_ho_msvc_b2:  53.9 ns
-:to_string_ho_msvc_b3:  81.6 ns
-:to_string_ho_msvc_b4:   202 ns
-:to_string_ho_msvc_b5:  92.7 ns
-:to_string_ho_msvc_b6:   102 ns
-:to_string_ho_msvc_b7:   152 ns
-:to_string_ho_msvc_b8:   216 ns
-:to_string_ho_msvc_b9:   250 ns
-:to_string_ho_msvc_c1:  31.8 ns
-:to_string_ho_msvc_c2:  64.9 ns
-:to_string_ho_msvc_c3:  96.3 ns
-:to_string_ho_msvc_c4:   208 ns
-:to_string_ho_msvc_c5:   106 ns
-:to_string_ho_msvc_c6:   120 ns
-:to_string_ho_msvc_c7:   161 ns
-:to_string_ho_msvc_c8:   230 ns
-:to_string_ho_msvc_c9:   288 ns
-:to_string_ho_msvc_d1:  18.1 ns
-:to_string_ho_msvc_d2:    80 ns
-:to_string_ho_msvc_d3:   144 ns
-:to_string_ho_msvc_d4:   368 ns
-:to_string_ho_msvc_d5:   110 ns
-:to_string_ho_msvc_d6:   153 ns
-:to_string_ho_msvc_d7:   253 ns
-:to_string_ho_msvc_d8:   397 ns
-:to_string_ho_msvc_d9:   699 ns
-:to_string_ho_msvc_e1:  28.4 ns
-:to_string_ho_msvc_e2:  96.1 ns
-:to_string_ho_msvc_e3:   106 ns
-:to_string_ho_msvc_e4:   449 ns
-:to_string_ho_msvc_e5:   153 ns
-:to_string_ho_msvc_e6:   243 ns
-:to_string_ho_msvc_e7:   324 ns
-:to_string_ho_msvc_e8:   417 ns
-:to_string_ho_msvc_e9:   810 ns
+:to_string_ho_msvc_a1:
+:to_string_ho_msvc_a2:
+:to_string_ho_msvc_b1:
+:to_string_ho_msvc_b2:
+:to_string_ho_msvc_b3:
+:to_string_ho_msvc_b4:
+:to_string_ho_msvc_b5:
+:to_string_ho_msvc_b6:
+:to_string_ho_msvc_b7:
+:to_string_ho_msvc_b8:
+:to_string_ho_msvc_b9:
+:to_string_ho_msvc_c1:
+:to_string_ho_msvc_c2:
+:to_string_ho_msvc_c3:
+:to_string_ho_msvc_c4:
+:to_string_ho_msvc_c5:
+:to_string_ho_msvc_c6:
+:to_string_ho_msvc_c7:
+:to_string_ho_msvc_c8:
+:to_string_ho_msvc_c9:
+:to_string_ho_msvc_d1:
+:to_string_ho_msvc_d2:
+:to_string_ho_msvc_d3:
+:to_string_ho_msvc_d4:
+:to_string_ho_msvc_d5:
+:to_string_ho_msvc_d6:
+:to_string_ho_msvc_d7:
+:to_string_ho_msvc_d8:
+:to_string_ho_msvc_d9:
+:to_string_ho_msvc_e1:
+:to_string_ho_msvc_e2:
+:to_string_ho_msvc_e3:
+:to_string_ho_msvc_e4:
+:to_string_ho_msvc_e5:
+:to_string_ho_msvc_e6:
+:to_string_ho_msvc_e7:
+:to_string_ho_msvc_e8:
+:to_string_ho_msvc_e9:
+:to_string_ho_msvc_f1:
+:to_string_ho_msvc_f2:
+:to_string_ho_msvc_f3:
+:to_string_ho_msvc_f4:
+:to_string_ho_msvc_f5:
+:to_string_ho_msvc_f6:
+:to_string_ho_msvc_f7:
+:to_string_ho_msvc_f8:
+:to_string_ho_msvc_f9:
+:to_string_ho_msvc_g1:
+:to_string_ho_msvc_g2:
+:to_string_ho_msvc_g3:
+:to_string_ho_msvc_g4:
+:to_string_ho_msvc_g5:
+:to_string_ho_msvc_g6:
+:to_string_ho_msvc_g7:
+:to_string_ho_msvc_g8:
+:to_string_ho_msvc_g9:
 
-:to_string_st_msvc_a1:     15 ns
-:to_string_st_msvc_a2:    453 ns
-:to_string_st_msvc_b1:   19.6 ns
-:to_string_st_msvc_b2:   52.1 ns
-:to_string_st_msvc_b3:     77 ns
-:to_string_st_msvc_b4:    176 ns
-:to_string_st_msvc_b5:   92.5 ns
-:to_string_st_msvc_b6:    116 ns
-:to_string_st_msvc_b7:    146 ns
-:to_string_st_msvc_b8:    216 ns
-:to_string_st_msvc_b9:    242 ns
-:to_string_st_msvc_c1:   31.7 ns
-:to_string_st_msvc_c2:   63.5 ns
-:to_string_st_msvc_c3:   96.5 ns
-:to_string_st_msvc_c4:    182 ns
-:to_string_st_msvc_c5:    111 ns
-:to_string_st_msvc_c6:    118 ns
-:to_string_st_msvc_c7:    159 ns
-:to_string_st_msvc_c8:    232 ns
-:to_string_st_msvc_c9:    285 ns
-:to_string_st_msvc_d1:   18.2 ns
-:to_string_st_msvc_d2:   79.2 ns
-:to_string_st_msvc_d3:    146 ns
-:to_string_st_msvc_d4:    372 ns
-:to_string_st_msvc_d5:    114 ns
-:to_string_st_msvc_d6:    152 ns
-:to_string_st_msvc_d7:    259 ns
-:to_string_st_msvc_d8:    392 ns
-:to_string_st_msvc_d9:    703 ns
-:to_string_st_msvc_e1:   39.2 ns
-:to_string_st_msvc_e2:    114 ns
-:to_string_st_msvc_e3:    124 ns
-:to_string_st_msvc_e4:    429 ns
-:to_string_st_msvc_e5:    159 ns
-:to_string_st_msvc_e6:    220 ns
-:to_string_st_msvc_e7:    290 ns
-:to_string_st_msvc_e8:    401 ns
-:to_string_st_msvc_e9:    734 ns
+:to_string_st_msvc_a1:
+:to_string_st_msvc_a2:
+:to_string_st_msvc_b1:
+:to_string_st_msvc_b2:
+:to_string_st_msvc_b3:
+:to_string_st_msvc_b4:
+:to_string_st_msvc_b5:
+:to_string_st_msvc_b6:
+:to_string_st_msvc_b7:
+:to_string_st_msvc_b8:
+:to_string_st_msvc_b9:
+:to_string_st_msvc_c1:
+:to_string_st_msvc_c2:
+:to_string_st_msvc_c3:
+:to_string_st_msvc_c4:
+:to_string_st_msvc_c5:
+:to_string_st_msvc_c6:
+:to_string_st_msvc_c7:
+:to_string_st_msvc_c8:
+:to_string_st_msvc_c9:
+:to_string_st_msvc_d1:
+:to_string_st_msvc_d2:
+:to_string_st_msvc_d3:
+:to_string_st_msvc_d4:
+:to_string_st_msvc_d5:
+:to_string_st_msvc_d6:
+:to_string_st_msvc_d7:
+:to_string_st_msvc_d8:
+:to_string_st_msvc_d9:
+:to_string_st_msvc_e1:
+:to_string_st_msvc_e2:
+:to_string_st_msvc_e3:
+:to_string_st_msvc_e4:
+:to_string_st_msvc_e5:
+:to_string_st_msvc_e6:
+:to_string_st_msvc_e7:
+:to_string_st_msvc_e8:
+:to_string_st_msvc_e9:
+:to_string_st_msvc_f1:
+:to_string_st_msvc_f2:
+:to_string_st_msvc_f3:
+:to_string_st_msvc_f4:
+:to_string_st_msvc_f5:
+:to_string_st_msvc_f6:
+:to_string_st_msvc_f7:
+:to_string_st_msvc_f8:
+:to_string_st_msvc_f9:
+:to_string_st_msvc_g1:
+:to_string_st_msvc_g2:
+:to_string_st_msvc_g3:
+:to_string_st_msvc_g4:
+:to_string_st_msvc_g5:
+:to_string_st_msvc_g6:
+:to_string_st_msvc_g7:
+:to_string_st_msvc_g8:
+:to_string_st_msvc_g9:
 
 :to_string_ho_gcc_a1:  1.32 ns
-:to_string_ho_gcc_a2:   202 ns
-:to_string_ho_gcc_b1:  2.62 ns
-:to_string_ho_gcc_b2:  23.7 ns
-:to_string_ho_gcc_b3:  18.8 ns
-:to_string_ho_gcc_b4:   111 ns
-:to_string_ho_gcc_b5:  19.4 ns
-:to_string_ho_gcc_b6:  20.1 ns
-:to_string_ho_gcc_b7:  31.6 ns
-:to_string_ho_gcc_b8:    80 ns
-:to_string_ho_gcc_b9:   152 ns
-:to_string_ho_gcc_c1:    17 ns
-:to_string_ho_gcc_c2:  32.4 ns
-:to_string_ho_gcc_c3:  43.3 ns
-:to_string_ho_gcc_c4:   130 ns
-:to_string_ho_gcc_c5:    54 ns
-:to_string_ho_gcc_c6:  56.5 ns
-:to_string_ho_gcc_c7:  68.9 ns
-:to_string_ho_gcc_c8:   107 ns
-:to_string_ho_gcc_c9:   186 ns
-:to_string_ho_gcc_d1:  2.39 ns
-:to_string_ho_gcc_d2:  35.7 ns
-:to_string_ho_gcc_d3:  87.6 ns
-:to_string_ho_gcc_d4:   245 ns
-:to_string_ho_gcc_d5:  76.1 ns
-:to_string_ho_gcc_d6:   134 ns
-:to_string_ho_gcc_d7:   153 ns
-:to_string_ho_gcc_d8:   174 ns
-:to_string_ho_gcc_d9:   411 ns
-:to_string_ho_gcc_e1:  21.1 ns
-:to_string_ho_gcc_e2:  51.8 ns
-:to_string_ho_gcc_e3:  61.3 ns
-:to_string_ho_gcc_e4:   242 ns
-:to_string_ho_gcc_e5:  83.6 ns
-:to_string_ho_gcc_e6:   133 ns
-:to_string_ho_gcc_e7:   183 ns
-:to_string_ho_gcc_e8:   214 ns
-:to_string_ho_gcc_e9:   517 ns
+:to_string_ho_gcc_a2:   198 ns
+:to_string_ho_gcc_b1:  2.77 ns
+:to_string_ho_gcc_b2:  24.8 ns
+:to_string_ho_gcc_b3:  20.1 ns
+:to_string_ho_gcc_b4:   107 ns
+:to_string_ho_gcc_b5:    22 ns
+:to_string_ho_gcc_b6:  22.3 ns
+:to_string_ho_gcc_b7:    35 ns
+:to_string_ho_gcc_b8:  84.9 ns
+:to_string_ho_gcc_b9:   141 ns
+:to_string_ho_gcc_c1:  16.8 ns
+:to_string_ho_gcc_c2:  41.4 ns
+:to_string_ho_gcc_c3:    45 ns
+:to_string_ho_gcc_c4:   123 ns
+:to_string_ho_gcc_c5:  52.6 ns
+:to_string_ho_gcc_c6:  58.5 ns
+:to_string_ho_gcc_c7:  67.3 ns
+:to_string_ho_gcc_c8:   108 ns
+:to_string_ho_gcc_c9:   178 ns
+:to_string_ho_gcc_d1:  2.25 ns
+:to_string_ho_gcc_d2:  34.5 ns
+:to_string_ho_gcc_d3:  85.3 ns
+:to_string_ho_gcc_d4:   235 ns
+:to_string_ho_gcc_d5:  71.7 ns
+:to_string_ho_gcc_d6:   136 ns
+:to_string_ho_gcc_d7:   158 ns
+:to_string_ho_gcc_d8:   186 ns
+:to_string_ho_gcc_d9:   439 ns
+:to_string_ho_gcc_e1:  21.3 ns
+:to_string_ho_gcc_e2:  52.3 ns
+:to_string_ho_gcc_e3:  60.5 ns
+:to_string_ho_gcc_e4:   241 ns
+:to_string_ho_gcc_e5:  77.9 ns
+:to_string_ho_gcc_e6:   128 ns
+:to_string_ho_gcc_e7:   187 ns
+:to_string_ho_gcc_e8:   209 ns
+:to_string_ho_gcc_e9:   523 ns
+:to_string_ho_gcc_f1:    14 ns
+:to_string_ho_gcc_f2:  39.5 ns
+:to_string_ho_gcc_f3:  48.9 ns
+:to_string_ho_gcc_f4:   216 ns
+:to_string_ho_gcc_f5:  48.1 ns
+:to_string_ho_gcc_f6:  84.5 ns
+:to_string_ho_gcc_f7:   101 ns
+:to_string_ho_gcc_f8:   169 ns
+:to_string_ho_gcc_f9:   408 ns
+:to_string_ho_gcc_g1:    28 ns
+:to_string_ho_gcc_g2:  60.6 ns
+:to_string_ho_gcc_g3:  79.5 ns
+:to_string_ho_gcc_g4:   275 ns
+:to_string_ho_gcc_g5:  91.1 ns
+:to_string_ho_gcc_g6:   159 ns
+:to_string_ho_gcc_g7:   230 ns
+:to_string_ho_gcc_g8:   227 ns
+:to_string_ho_gcc_g9:   551 ns
 
-:to_string_st_gcc_a1:  1.32 ns
-:to_string_st_gcc_a2:   206 ns
-:to_string_st_gcc_b1:  11.2 ns
-:to_string_st_gcc_b2:  26.8 ns
-:to_string_st_gcc_b3:  25.5 ns
-:to_string_st_gcc_b4:   115 ns
-:to_string_st_gcc_b5:  36.4 ns
-:to_string_st_gcc_b6:  23.5 ns
-:to_string_st_gcc_b7:  64.4 ns
-:to_string_st_gcc_b8:  99.6 ns
-:to_string_st_gcc_b9:   148 ns
-:to_string_st_gcc_c1:  17.4 ns
-:to_string_st_gcc_c2:  75.2 ns
-:to_string_st_gcc_c3:  45.5 ns
-:to_string_st_gcc_c4:   131 ns
-:to_string_st_gcc_c5:  57.2 ns
-:to_string_st_gcc_c6:  55.5 ns
-:to_string_st_gcc_c7:  80.5 ns
-:to_string_st_gcc_c8:   118 ns
-:to_string_st_gcc_c9:   171 ns
-:to_string_st_gcc_d1:  2.23 ns
-:to_string_st_gcc_d2:  33.8 ns
-:to_string_st_gcc_d3:  83.8 ns
-:to_string_st_gcc_d4:   247 ns
-:to_string_st_gcc_d5:  71.3 ns
-:to_string_st_gcc_d6:   136 ns
-:to_string_st_gcc_d7:   156 ns
-:to_string_st_gcc_d8:   190 ns
-:to_string_st_gcc_d9:   423 ns
-:to_string_st_gcc_e1:    21 ns
-:to_string_st_gcc_e2:  51.2 ns
-:to_string_st_gcc_e3:  59.4 ns
-:to_string_st_gcc_e4:   298 ns
-:to_string_st_gcc_e5:  81.6 ns
-:to_string_st_gcc_e6:   123 ns
-:to_string_st_gcc_e7:   189 ns
-:to_string_st_gcc_e8:   192 ns
-:to_string_st_gcc_e9:   542 ns
+:to_string_st_gcc_a1: 1.32 ns
+:to_string_st_gcc_a2:  202 ns
+:to_string_st_gcc_b1: 11.2 ns
+:to_string_st_gcc_b2: 25.8 ns
+:to_string_st_gcc_b3:   22 ns
+:to_string_st_gcc_b4:  101 ns
+:to_string_st_gcc_b5: 32.5 ns
+:to_string_st_gcc_b6: 21.1 ns
+:to_string_st_gcc_b7: 54.6 ns
+:to_string_st_gcc_b8: 86.9 ns
+:to_string_st_gcc_b9:  137 ns
+:to_string_st_gcc_c1: 16.8 ns
+:to_string_st_gcc_c2: 32.7 ns
+:to_string_st_gcc_c3: 44.2 ns
+:to_string_st_gcc_c4:  127 ns
+:to_string_st_gcc_c5: 56.1 ns
+:to_string_st_gcc_c6: 54.8 ns
+:to_string_st_gcc_c7: 75.7 ns
+:to_string_st_gcc_c8:  110 ns
+:to_string_st_gcc_c9:  164 ns
+:to_string_st_gcc_d1: 2.29 ns
+:to_string_st_gcc_d2: 33.6 ns
+:to_string_st_gcc_d3: 85.8 ns
+:to_string_st_gcc_d4:  241 ns
+:to_string_st_gcc_d5:   73 ns
+:to_string_st_gcc_d6:  137 ns
+:to_string_st_gcc_d7:  163 ns
+:to_string_st_gcc_d8:  198 ns
+:to_string_st_gcc_d9:  418 ns
+:to_string_st_gcc_e1: 21.2 ns
+:to_string_st_gcc_e2:   53 ns
+:to_string_st_gcc_e3: 58.1 ns
+:to_string_st_gcc_e4:  242 ns
+:to_string_st_gcc_e5:   77 ns
+:to_string_st_gcc_e6:  129 ns
+:to_string_st_gcc_e7:  178 ns
+:to_string_st_gcc_e8:  207 ns
+:to_string_st_gcc_e9:  504 ns
+:to_string_st_gcc_f1: 14.3 ns
+:to_string_st_gcc_f2: 38.1 ns
+:to_string_st_gcc_f3: 49.4 ns
+:to_string_st_gcc_f4:  215 ns
+:to_string_st_gcc_f5: 52.4 ns
+:to_string_st_gcc_f6: 88.2 ns
+:to_string_st_gcc_f7:  124 ns
+:to_string_st_gcc_f8:  145 ns
+:to_string_st_gcc_f9:  397 ns
+:to_string_st_gcc_g1:   28 ns
+:to_string_st_gcc_g2: 61.7 ns
+:to_string_st_gcc_g3: 71.7 ns
+:to_string_st_gcc_g4:  279 ns
+:to_string_st_gcc_g5: 93.3 ns
+:to_string_st_gcc_g6:  150 ns
+:to_string_st_gcc_g7:  218 ns
+:to_string_st_gcc_g8:  219 ns
+:to_string_st_gcc_g9:  545 ns
 
-:to_string_ho_clang_a1:  10.3 ns
-:to_string_ho_clang_a2:   211 ns
-:to_string_ho_clang_b1:  12.9 ns
-:to_string_ho_clang_b2:    29 ns
-:to_string_ho_clang_b3:  27.3 ns
-:to_string_ho_clang_b4:   107 ns
-:to_string_ho_clang_b5:  55.9 ns
-:to_string_ho_clang_b6:  55.4 ns
-:to_string_ho_clang_b7:  76.7 ns
-:to_string_ho_clang_b8:  85.5 ns
-:to_string_ho_clang_b9:   155 ns
-:to_string_ho_clang_c1:  18.2 ns
-:to_string_ho_clang_c2:  35.4 ns
-:to_string_ho_clang_c3:    42 ns
-:to_string_ho_clang_c4:   109 ns
-:to_string_ho_clang_c5:  60.5 ns
-:to_string_ho_clang_c6:  57.3 ns
-:to_string_ho_clang_c7:  89.5 ns
-:to_string_ho_clang_c8:   118 ns
-:to_string_ho_clang_c9:   170 ns
-:to_string_ho_clang_d1:  2.11 ns
-:to_string_ho_clang_d2:  37.6 ns
-:to_string_ho_clang_d3:  70.2 ns
-:to_string_ho_clang_d4:   212 ns
-:to_string_ho_clang_d5:  97.5 ns
-:to_string_ho_clang_d6:   116 ns
-:to_string_ho_clang_d7:   169 ns
-:to_string_ho_clang_d8:   177 ns
-:to_string_ho_clang_d9:   456 ns
-:to_string_ho_clang_e1:  11.6 ns
-:to_string_ho_clang_e2:  46.8 ns
-:to_string_ho_clang_e3:  51.6 ns
-:to_string_ho_clang_e4:   238 ns
-:to_string_ho_clang_e5:    70 ns
-:to_string_ho_clang_e6:   131 ns
-:to_string_ho_clang_e7:   188 ns
-:to_string_ho_clang_e8:   180 ns
-:to_string_ho_clang_e9:   482 ns
+:to_string_ho_clang_a1: 9.93 ns
+:to_string_ho_clang_a2:  219 ns
+:to_string_ho_clang_b1: 12.7 ns
+:to_string_ho_clang_b2: 29.4 ns
+:to_string_ho_clang_b3: 27.6 ns
+:to_string_ho_clang_b4:  103 ns
+:to_string_ho_clang_b5: 58.3 ns
+:to_string_ho_clang_b6: 56.6 ns
+:to_string_ho_clang_b7: 72.9 ns
+:to_string_ho_clang_b8: 86.9 ns
+:to_string_ho_clang_b9:  163 ns
+:to_string_ho_clang_c1: 26.6 ns
+:to_string_ho_clang_c2: 45.6 ns
+:to_string_ho_clang_c3: 46.6 ns
+:to_string_ho_clang_c4:  118 ns
+:to_string_ho_clang_c5: 65.8 ns
+:to_string_ho_clang_c6: 63.9 ns
+:to_string_ho_clang_c7: 81.6 ns
+:to_string_ho_clang_c8:  126 ns
+:to_string_ho_clang_c9:  186 ns
+:to_string_ho_clang_d1: 2.11 ns
+:to_string_ho_clang_d2: 37.2 ns
+:to_string_ho_clang_d3:   69 ns
+:to_string_ho_clang_d4:  216 ns
+:to_string_ho_clang_d5:  100 ns
+:to_string_ho_clang_d6:  116 ns
+:to_string_ho_clang_d7:  166 ns
+:to_string_ho_clang_d8:  175 ns
+:to_string_ho_clang_d9:  460 ns
+:to_string_ho_clang_e1: 11.9 ns
+:to_string_ho_clang_e2: 41.4 ns
+:to_string_ho_clang_e3: 53.4 ns
+:to_string_ho_clang_e4:  233 ns
+:to_string_ho_clang_e5: 70.5 ns
+:to_string_ho_clang_e6:  137 ns
+:to_string_ho_clang_e7:  190 ns
+:to_string_ho_clang_e8:  174 ns
+:to_string_ho_clang_e9:  493 ns
+:to_string_ho_clang_f1: 13.9 ns
+:to_string_ho_clang_f2: 38.6 ns
+:to_string_ho_clang_f3: 51.5 ns
+:to_string_ho_clang_f4:  207 ns
+:to_string_ho_clang_f5: 58.3 ns
+:to_string_ho_clang_f6: 83.4 ns
+:to_string_ho_clang_f7: 94.9 ns
+:to_string_ho_clang_f8:  143 ns
+:to_string_ho_clang_f9:  386 ns
+:to_string_ho_clang_g1: 18.8 ns
+:to_string_ho_clang_g2:   51 ns
+:to_string_ho_clang_g3: 72.2 ns
+:to_string_ho_clang_g4:  270 ns
+:to_string_ho_clang_g5: 93.3 ns
+:to_string_ho_clang_g6:  161 ns
+:to_string_ho_clang_g7:  233 ns
+:to_string_ho_clang_g8:  210 ns
+:to_string_ho_clang_g9:  538 ns
 
-:to_string_st_clang_a1:  9.84 ns
-:to_string_st_clang_a2:   211 ns
-:to_string_st_clang_b1:  12.9 ns
-:to_string_st_clang_b2:  29.3 ns
-:to_string_st_clang_b3:  26.9 ns
-:to_string_st_clang_b4:  95.8 ns
-:to_string_st_clang_b5:  62.1 ns
-:to_string_st_clang_b6:  54.4 ns
-:to_string_st_clang_b7:  85.1 ns
-:to_string_st_clang_b8:   118 ns
-:to_string_st_clang_b9:   150 ns
-:to_string_st_clang_c1:  18.4 ns
-:to_string_st_clang_c2:  35.4 ns
-:to_string_st_clang_c3:  41.7 ns
-:to_string_st_clang_c4:   103 ns
-:to_string_st_clang_c5:    59 ns
-:to_string_st_clang_c6:  54.3 ns
-:to_string_st_clang_c7:  75.5 ns
-:to_string_st_clang_c8:   136 ns
-:to_string_st_clang_c9:   184 ns
-:to_string_st_clang_d1:  2.11 ns
-:to_string_st_clang_d2:  43.9 ns
-:to_string_st_clang_d3:  70.3 ns
-:to_string_st_clang_d4:   213 ns
-:to_string_st_clang_d5:  94.1 ns
-:to_string_st_clang_d6:   117 ns
-:to_string_st_clang_d7:   168 ns
-:to_string_st_clang_d8:   182 ns
-:to_string_st_clang_d9:   458 ns
-:to_string_st_clang_e1:  13.5 ns
-:to_string_st_clang_e2:  44.3 ns
-:to_string_st_clang_e3:  53.6 ns
-:to_string_st_clang_e4:   234 ns
-:to_string_st_clang_e5:  72.7 ns
-:to_string_st_clang_e6:   126 ns
-:to_string_st_clang_e7:   192 ns
-:to_string_st_clang_e8:   175 ns
-:to_string_st_clang_e9:   497 ns
+
+:to_string_st_clang_a1: 9.87 ns
+:to_string_st_clang_a2:  217 ns
+:to_string_st_clang_b1: 12.7 ns
+:to_string_st_clang_b2: 32.2 ns
+:to_string_st_clang_b3: 28.2 ns
+:to_string_st_clang_b4: 96.1 ns
+:to_string_st_clang_b5: 56.7 ns
+:to_string_st_clang_b6:   58 ns
+:to_string_st_clang_b7: 74.5 ns
+:to_string_st_clang_b8:   95 ns
+:to_string_st_clang_b9:  159 ns
+:to_string_st_clang_c1: 24.8 ns
+:to_string_st_clang_c2: 48.9 ns
+:to_string_st_clang_c3: 44.3 ns
+:to_string_st_clang_c4:  106 ns
+:to_string_st_clang_c5: 64.5 ns
+:to_string_st_clang_c6: 58.9 ns
+:to_string_st_clang_c7: 77.6 ns
+:to_string_st_clang_c8:  118 ns
+:to_string_st_clang_c9:  193 ns
+:to_string_st_clang_d1: 2.11 ns
+:to_string_st_clang_d2: 38.1 ns
+:to_string_st_clang_d3: 67.3 ns
+:to_string_st_clang_d4:  222 ns
+:to_string_st_clang_d5:  102 ns
+:to_string_st_clang_d6:  116 ns
+:to_string_st_clang_d7:  170 ns
+:to_string_st_clang_d8:  173 ns
+:to_string_st_clang_d9:  442 ns
+:to_string_st_clang_e1: 13.8 ns
+:to_string_st_clang_e2: 48.5 ns
+:to_string_st_clang_e3: 55.6 ns
+:to_string_st_clang_e4:  233 ns
+:to_string_st_clang_e5: 71.4 ns
+:to_string_st_clang_e6:  125 ns
+:to_string_st_clang_e7:  195 ns
+:to_string_st_clang_e8:  194 ns
+:to_string_st_clang_e9:  508 ns
+:to_string_st_clang_f1: 14.4 ns
+:to_string_st_clang_f2: 38.7 ns
+:to_string_st_clang_f3: 52.2 ns
+:to_string_st_clang_f4:  208 ns
+:to_string_st_clang_f5: 58.4 ns
+:to_string_st_clang_f6:   72 ns
+:to_string_st_clang_f7: 90.4 ns
+:to_string_st_clang_f8:  142 ns
+:to_string_st_clang_f9:  373 ns
+:to_string_st_clang_g1: 19.1 ns
+:to_string_st_clang_g2: 54.2 ns
+:to_string_st_clang_g3:   73 ns
+:to_string_st_clang_g4:  266 ns
+:to_string_st_clang_g5: 86.9 ns
+:to_string_st_clang_g6:  140 ns
+:to_string_st_clang_g7:  239 ns
+:to_string_st_clang_g8:  225 ns
+:to_string_st_clang_g9:  549 ns
+
 
 `std::to_string` versus `strf::to_string` versus `fmt::format`
-
 
 ==== Sample 1
 
@@ -1191,7 +1606,24 @@ Print an integer and nothing more.
 |`{to_string_ho_clang_e1}`
 |`{to_string_st_clang_e1}`
 
-| **5.** `std::to_string`
+| **5.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+|`{to_string_ho_msvc_f1}`
+|`{to_string_st_msvc_f1}`
+|`{to_string_ho_gcc_f1}`
+|`{to_string_st_gcc_f1}`
+|`{to_string_ho_clang_f1}`
+|`{to_string_st_clang_f1}`
+
+
+| **6.** __Hybrid &#x2002;{fmt}-Strf__
+|`{to_string_ho_msvc_g1}`
+|`{to_string_st_msvc_g1}`
+|`{to_string_ho_gcc_g1}`
+|`{to_string_st_gcc_g1}`
+|`{to_string_ho_clang_g1}`
+|`{to_string_st_clang_g1}`
+
+| **7.** `std::to_string`
 |
 |`{to_string_st_msvc_a1}`
 |
@@ -1204,6 +1636,20 @@ Print an integer and nothing more.
 . `strf::to_string .tr("{}", 123456)`
 . `fmt::format(FMT_COMPILE("{}"), 123456)`
 . `fmt::format("{}", 123456)`
+. {blank}
++
+----
+strf::string_maker maker;
+fmt::format_to(make_iterator(maker), FMT_COMPILE("{}"), 123456)
+maker.finish();
+----
+. {blank}
++
+----
+strf::string_maker maker;
+fmt::format_to(make_iterator(maker), "{}", 123456)
+maker.finish();
+----
 . `std::to_string(123456)`
 
 ==== Sample 2
@@ -1245,6 +1691,22 @@ Print a floting point value and nothing more.
 |`{to_string_ho_clang_e2}`
 |`{to_string_st_clang_e2}`
 
+| **5.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+|`{to_string_ho_msvc_f2}`
+|`{to_string_st_msvc_f2}`
+|`{to_string_ho_gcc_f2}`
+|`{to_string_st_gcc_f2}`
+|`{to_string_ho_clang_f2}`
+|`{to_string_st_clang_f2}`
+
+| **6.** __Hybrid &#x2002;{fmt}-Strf__
+|`{to_string_ho_msvc_g2}`
+|`{to_string_st_msvc_g2}`
+|`{to_string_ho_gcc_g2}`
+|`{to_string_st_gcc_g2}`
+|`{to_string_ho_clang_g2}`
+|`{to_string_st_clang_g2}`
+
 | **5.** `std::to_string`
 |
 |`{to_string_st_msvc_a2}`
@@ -1258,6 +1720,20 @@ Print a floting point value and nothing more.
 . `strf::to_string .tr("{}", 0.123456)`
 . `fmt::format(FMT_COMPILE("{}"), 0.123456)`
 . `fmt::format("{}", 0.123456)`
+. {blank}
++
+----
+strf::string_maker maker;
+fmt::format_to(make_iterator(maker), FMT_COMPILE("{}"), 0.123456)
+maker.finish();
+----
+. {blank}
++
+----
+strf::string_maker maker;
+fmt::format_to(make_iterator(maker), "{}", 0.123456)
+maker.finish();
+----
 . `std::to_string(0.123456)`
 
 ==== Sample 3
@@ -1298,12 +1774,44 @@ Print a string
 |`{to_string_st_gcc_e3}`
 |`{to_string_ho_clang_e3}`
 |`{to_string_st_clang_e3}`
+
+| **5.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+|`{to_string_ho_msvc_f3}`
+|`{to_string_st_msvc_f3}`
+|`{to_string_ho_gcc_f3}`
+|`{to_string_st_gcc_f3}`
+|`{to_string_ho_clang_f3}`
+|`{to_string_st_clang_f3}`
+
+| **6.** __Hybrid &#x2002;{fmt}-Strf__
+|`{to_string_ho_msvc_g3}`
+|`{to_string_st_msvc_g3}`
+|`{to_string_ho_gcc_g3}`
+|`{to_string_st_gcc_g3}`
+|`{to_string_ho_clang_g3}`
+|`{to_string_st_clang_g3}`
 |===
 
 . `strf::to_string ("Blah ", str, "!\n")`
 . `strf::to_string .tr("Blah {}!\n", str)`
 . `fmt::format(FMT_COMPILE("Blah {}!\n"), str)`
 . `fmt::format("Blah {}!\n", str)`
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, FMT_COMPILE("Blah {}!\n"), str)
+maker.finish();
+----
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, "Blah {}!\n", str)
+maker.finish();
+----
 
 .using
 [source,cpp]
@@ -1349,12 +1857,44 @@ Print a string with alignment formatting
 |`{to_string_st_gcc_e4}`
 |`{to_string_ho_clang_e4}`
 |`{to_string_st_clang_e4}`
+
+| **5.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+|`{to_string_ho_msvc_f4}`
+|`{to_string_st_msvc_f4}`
+|`{to_string_ho_gcc_f4}`
+|`{to_string_st_gcc_f4}`
+|`{to_string_ho_clang_f4}`
+|`{to_string_st_clang_f4}`
+
+| **6.** __Hybrid &#x2002;{fmt}-Strf__
+|`{to_string_ho_msvc_g4}`
+|`{to_string_st_msvc_g4}`
+|`{to_string_ho_gcc_g4}`
+|`{to_string_st_gcc_g4}`
+|`{to_string_ho_clang_g4}`
+|`{to_string_st_clang_g4}`
 |===
 
 . `strf::to_string ("Blah ",  strf::right(str, 40, '.'), "!\n")`
 . `strf::to_string .tr("Blah {}!\n", strf::right(str, 40, '.')`
 . `fmt::format(FMT_COMPILE("Blah {:.>40}!\n"), str)`
 . `fmt::format("Blah {:.>40}!\n", str)`
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, FMT_COMPILE("Blah {:.>40}!\n"), str)
+maker.finish();
+----
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, "Blah {:.>40}!\n", str)
+maker.finish();
+----
 
 ==== Sample 5
 
@@ -1394,12 +1934,44 @@ Print integers without formatting
 |`{to_string_st_gcc_e5}`
 |`{to_string_ho_clang_e5}`
 |`{to_string_st_clang_e5}`
+
+| **5.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+|`{to_string_ho_msvc_f5}`
+|`{to_string_st_msvc_f5}`
+|`{to_string_ho_gcc_f5}`
+|`{to_string_st_gcc_f5}`
+|`{to_string_ho_clang_f5}`
+|`{to_string_st_clang_f5}`
+
+| **6.** __Hybrid &#x2002;{fmt}-Strf__
+|`{to_string_ho_msvc_g5}`
+|`{to_string_st_msvc_g5}`
+|`{to_string_ho_gcc_g5}`
+|`{to_string_st_gcc_g5}`
+|`{to_string_ho_clang_g5}`
+|`{to_string_st_clang_g5}`
 |===
 
 . `strf::to_string ("blah ", 123456, " blah ", 0x123456, " blah")`
 . `strf::to_string .tr("blah {} blah {} blah", 123456, 0x123456)`
 . `fmt::format(FMT_COMPILE("blah {} blah {} blah"), 123456, 0x123456)`
 . `fmt::format("blah {} blah {} blah", 123456, 0x123456)`
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, FMT_COMPILE("blah {} blah {} blah"), 123456, 0x123456)
+maker.finish();
+----
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, "blah {} blah {} blah", 123456, 0x123456)
+maker.finish();
+----
 
 ==== Sample 6
 
@@ -1440,12 +2012,43 @@ Print integers with some basic formatting
 |`{to_string_ho_clang_e6}`
 |`{to_string_st_clang_e6}`
 
+| **5.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+|`{to_string_ho_msvc_f6}`
+|`{to_string_st_msvc_f6}`
+|`{to_string_ho_gcc_f6}`
+|`{to_string_st_gcc_f6}`
+|`{to_string_ho_clang_f6}`
+|`{to_string_st_clang_f6}`
+
+| **6.** __Hybrid &#x2002;{fmt}-Strf__
+|`{to_string_ho_msvc_g6}`
+|`{to_string_st_msvc_g6}`
+|`{to_string_ho_gcc_g6}`
+|`{to_string_st_gcc_g6}`
+|`{to_string_ho_clang_g6}`
+|`{to_string_st_clang_g6}`
 |===
 
 . `strf::to_string("blah ", +strf::dec(123456), " blah ", *strf::hex(0x123456), " blah")`
 . `strf::to_string.tr("blah {} blah {} blah", +strf::dec(123456), *strf::hex(0x123456))`
 . `fmt::format(FMT_COMPILE("blah {:+} blah {:#x} blah"), 123456, 0x123456)`
 . `fmt::format("blah {:+} blah {:#x} blah", 123456, 0x123456)`
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, FMT_COMPILE("blah {:+} blah {:#x} blah"), 123456, 0x123456)
+maker.finish();
+----
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, "blah {:+} blah {:#x} blah", 123456, 0x123456)
+maker.finish();
+----
 
 ==== Sample 7
 
@@ -1485,12 +2088,44 @@ Print some formatted integers with alignment
 |`{to_string_st_gcc_e7}`
 |`{to_string_ho_clang_e7}`
 |`{to_string_st_clang_e7}`
+
+| **5.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+|`{to_string_ho_msvc_f7}`
+|`{to_string_st_msvc_f7}`
+|`{to_string_ho_gcc_f7}`
+|`{to_string_st_gcc_f7}`
+|`{to_string_ho_clang_f7}`
+|`{to_string_st_clang_f7}`
+
+| **6.** __Hybrid &#x2002;{fmt}-Strf__
+|`{to_string_ho_msvc_g7}`
+|`{to_string_st_msvc_g7}`
+|`{to_string_ho_gcc_g7}`
+|`{to_string_st_gcc_g7}`
+|`{to_string_ho_clang_g7}`
+|`{to_string_st_clang_g7}`
 |===
 
 . `strf::to_string("blah ", +strf::right(123456, 20, '_'), " blah ", *strf::hex(0x123456)<20, " blah")`
 . `strf::to_string.tr("blah {} blah {} blah", +strf::right(123456, 20, '_'), *strf::hex(0x123456)<20)`
 . `fmt::format(FMT_COMPILE("blah {:_>+20} blah {:<#20x} blah"), 123456, 0x123456)`
 . `fmt::format("blah {:_>+20} blah {:<#20x} blah", 123456, 0x123456)`
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, FMT_COMPILE("blah {:_>+20} blah {:<#20x} blah"), 123456, 0x123456)
+maker.finish();
+----
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, "blah {:_>+20} blah {:<#20x} blah", 123456, 0x123456)
+maker.finish();
+----
 
 ==== Sample 8
 
@@ -1530,12 +2165,44 @@ Print floating-point values without formatting
 |`{to_string_st_gcc_e8}`
 |`{to_string_ho_clang_e8}`
 |`{to_string_st_clang_e8}`
+
+| **5.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+|`{to_string_ho_msvc_f8}`
+|`{to_string_st_msvc_f8}`
+|`{to_string_ho_gcc_f8}`
+|`{to_string_st_gcc_f8}`
+|`{to_string_ho_clang_f8}`
+|`{to_string_st_clang_f8}`
+
+| **6.** __Hybrid &#x2002;{fmt}-Strf__
+|`{to_string_ho_msvc_g8}`
+|`{to_string_st_msvc_g8}`
+|`{to_string_ho_gcc_g8}`
+|`{to_string_st_gcc_g8}`
+|`{to_string_ho_clang_g8}`
+|`{to_string_st_clang_g8}`
 |===
 
 . `strf::to_string(1.123e+5, ' ', M_PI, ' ', 1.11e-222)`
 . `strf::to_string.tr("{} {} {}", 1.123e+5, M_PI, 1.11e-222)`
 . `fmt::format(FMT_COMPILE("{} {} {}"), 1.123e+5, M_PI, 1.11e-222)`
 . `fmt::format("{} {} {}", 1.123e+5, M_PI, 1.11e-222)`
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, FMT_COMPILE("{} {} {}"), 1.123e+5, M_PI, 1.11e-222)
+maker.finish();
+----
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, "{} {} {}", 1.123e+5, M_PI, 1.11e-222)
+maker.finish();
+----
 
 ==== Sample 9
 
@@ -1575,12 +2242,44 @@ Print floating-point values with some formatting options
 |`{to_string_st_gcc_e9}`
 |`{to_string_ho_clang_e9}`
 |`{to_string_st_clang_e9}`
+
+| **5.** __Hybrid &#x2002;{fmt}-Strf__ &#x2002;/&#x2002; `FMT_COMPILE`
+|`{to_string_ho_msvc_f9}`
+|`{to_string_st_msvc_f9}`
+|`{to_string_ho_gcc_f9}`
+|`{to_string_st_gcc_f9}`
+|`{to_string_ho_clang_f9}`
+|`{to_string_st_clang_f9}`
+
+| **6.** __Hybrid &#x2002;{fmt}-Strf__
+|`{to_string_ho_msvc_g9}`
+|`{to_string_st_msvc_g9}`
+|`{to_string_ho_gcc_g9}`
+|`{to_string_st_gcc_g9}`
+|`{to_string_ho_clang_g9}`
+|`{to_string_st_clang_g9}`
 |===
 
 . `strf::to_string(*fixed(1.123e+5), ' ', +fixed(M_PI, 8), ' ', sci(1.11e-222)>30)`
 . `strf::to_string.tr("{} {} {}", *fixed(1.123e+5), +fixed(M_PI, 8), sci(1.11e-222)>30)`
 . `fmt::format(FMT_COMPILE("{:#f} {:+.8f} {:>30e}"), 1.123e+5, M_PI, 1.11e-222)`
 . `fmt::format("{:#f} {:+.8f} {:>30e}", 1.123e+5, M_PI, 1.11e-222)`
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, FMT_COMPILE("{:#f} {:+.8f} {:>30e}"), 1.123e+5, M_PI, 1.11e-222)
+maker.finish();
+----
+. {blank}
++
+----
+strf::string_maker maker;
+auto it = make_iterator(maker);
+fmt::format_to(it, "{:#f} {:+.8f} {:>30e}", 1.123e+5, M_PI, 1.11e-222)
+maker.finish();
+----
 
 == Compilation performance
 

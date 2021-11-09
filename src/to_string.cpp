@@ -7,6 +7,7 @@
 
 #include <strf/to_string.hpp>
 #include <strf/to_cfile.hpp>
+#include <strf/iterator.hpp>
 #include <iostream>
 #include <sstream>
 #include <climits>
@@ -34,6 +35,44 @@
     benchmark::RegisterBenchmark(LABEL, ID :: func);
 
 
+#define BM_HYBRID(FIXTURE, ...)  \
+    DO_BM_HYBRID(CAT(bm_, __LINE__), FIXTURE, __VA_ARGS__)
+
+#define DO_BM_HYBRID(ID, FIXTURE,  ...)                                 \
+    struct ID {                                                         \
+        static void func(benchmark::State& state) {                     \
+            FIXTURE;                                                    \
+            for(auto _ : state) {                                       \
+                strf::string_maker dst;                                 \
+                fmt::format_to(strf::make_iterator(dst), __VA_ARGS__);  \
+                auto s = dst.finish();                                  \
+                benchmark::DoNotOptimize(s.data());                     \
+                benchmark::ClobberMemory();                             \
+            }                                                           \
+        }                                                               \
+    };                                                                  \
+    benchmark::RegisterBenchmark("hybrid_fmt_strf(" #__VA_ARGS__ ")", ID :: func);
+
+#define BM_HYBRID_COMPILE(FIXTURE, FMTSTR, ...)                      \
+    DO_BM_HYBRID_COMPILE(CAT(bm_, __LINE__), FIXTURE, FMTSTR, __VA_ARGS__)
+
+#define DO_BM_HYBRID_COMPILE(ID, FIXTURE, FMTSTR,  ...)                 \
+    struct ID {                                                         \
+        static void func(benchmark::State& state) {                     \
+            FIXTURE;                                                    \
+            for(auto _ : state) {                                       \
+                strf::string_maker dst;                                 \
+                fmt::format_to( strf::make_iterator(dst)                \
+                              , FMT_COMPILE(FMTSTR), __VA_ARGS__);      \
+                auto s = dst.finish();                                  \
+                benchmark::DoNotOptimize(s.data());                     \
+                benchmark::ClobberMemory();                             \
+            }                                                           \
+        }                                                               \
+    };                                                                  \
+    benchmark::RegisterBenchmark                                        \
+        ( "hybrid_fmt_strf(FMT_COMPILE(" #FMTSTR "), " #__VA_ARGS__ ")"   \
+        , ID :: func);
 
 #define FIXTURE_STR std::string str = "blah blah blah blah blah ";
 
@@ -64,6 +103,22 @@
 //     }
 // }
 constexpr double pi = M_PI;
+
+template <typename... Args>
+std::string hybrid_to_string(Args&&... args)
+{
+    strf::string_maker dest;
+    fmt::format_to(strf::make_iterator(dest), (Args&&)args...);
+    return dest.finish();
+}
+
+template <typename... T, typename... Args>
+std::string hybrid_to_string_(fmt::format_string<T...> fmtstr,  Args&&... args)
+{
+    strf::string_maker dest;
+    fmt::format_to(strf::make_iterator(dest), fmtstr, (Args&&)args...);
+    return dest.finish();
+}
 
 int main(int argc, char** argv)
 {
@@ -116,6 +171,7 @@ int main(int argc, char** argv)
     BM2(,  fmt::format(FMT_COMPILE( "{:#f} {:+.8f} {:>30e}" ), 1.123e+5, pi, 1.11e-222)
         , "fmt::format(FMT_COMPILE(\"{:#f} {:+.8f} {:>30e}\"), 1.123e+5, pi, 1.11e-222)");
 
+
     BM(, fmt::format("{}", 123456));
     BM(, fmt::format("{}", 0.123456));
     BM(FIXTURE_STR, fmt::format("Blah {}!\n", str));
@@ -126,6 +182,26 @@ int main(int argc, char** argv)
     BM(, fmt::format("blah {:_>+20} blah {:<#20x} blah", 123456, 0x123456));
     BM(, fmt::format("{} {} {}", 1.123e+5, pi, 1.11e-222));
     BM(, fmt::format("{:#f} {:+.8f} {:>30e}", 1.123e+5, pi, 1.11e-222));
+
+    BM_HYBRID_COMPILE(, "{}", 123456);
+    BM_HYBRID_COMPILE(, "{}", 0.123456);
+    BM_HYBRID_COMPILE(FIXTURE_STR,  "Blah {}!\n", str);
+    BM_HYBRID_COMPILE(FIXTURE_STR,  "Blah {:.>40}!\n", str);
+    BM_HYBRID_COMPILE(, "blah {} blah {} blah", 123456, 0x123456);
+    BM_HYBRID_COMPILE(, "blah {:+} blah {:#x} blah", 123456, 0x123456);
+    BM_HYBRID_COMPILE(, "blah {:_>+20} blah {:<#20x} blah", 123456, 0x123456);
+    BM_HYBRID_COMPILE(, "{} {} {}", 1.123e+5, pi, 1.11e-222);
+    BM_HYBRID_COMPILE(, "{:#f} {:+.8f} {:>30e}", 1.123e+5, pi, 1.11e-222);
+
+    BM_HYBRID(, "{}", 123456);
+    BM_HYBRID(, "{}", 0.123456);
+    BM_HYBRID(FIXTURE_STR, "Blah {}!\n", str);
+    BM_HYBRID(FIXTURE_STR, "Blah {:.>40}!\n", str);
+    BM_HYBRID(, "blah {} blah {} blah", 123456, 0x123456);
+    BM_HYBRID(, "blah {:+} blah {:#x} blah", 123456, 0x123456);
+    BM_HYBRID(, "blah {:_>+20} blah {:<#20x} blah", 123456, 0x123456);
+    BM_HYBRID(, "{} {} {}", 1.123e+5, pi, 1.11e-222);
+    BM_HYBRID(, "{:#f} {:+.8f} {:>30e}", 1.123e+5, pi, 1.11e-222);
 
     BM(FIXTURE_U8SAMPLE, strf::to_u16string.reserve_calc() (strf::conv(u8sample)));
     BM(FIXTURE_U8SAMPLE, strf::to_u16string.no_reserve()   (strf::conv(u8sample)));
@@ -139,11 +215,16 @@ int main(int argc, char** argv)
     benchmark::RunSpecifiedBenchmarks();
 
     strf::to(stdout)
-        ( "\n  where :"
+        ( "\n  Variables definitions :"
           "\n    constexpr double pi = M_PI;"
           "\n    " STR(FIXTURE_STR)
           "\n    " STR(FIXTURE_U8SAMPLE)
           "\n    " STR(FIXTURE_U16SAMPLE)
+          "\n"
+          "\n `hybrid_fmt_strf(args...)` is equivalent to :"
+          "\n    strf::string_maker smk;"
+          "\n    fmt::format_ot(strf::make_iterator(smk), args...);"
+          "\n    smk.finish();"
           "\n" );
 
     return 0;
