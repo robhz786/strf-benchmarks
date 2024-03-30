@@ -45,7 +45,7 @@
 //     char16_t u16buff [510];
 //     FIXTURE_U8SAMPLE;
 //     for(auto _ : state) {
-//         (void)strf::to(u16buff)(strf::conv(u8sample));
+//         (void)strf::to(u16buff)(strf::transcode(u8sample));
 //         auto str = strf::to_u16string.reserve_calc() (u16buff);
 //         benchmark::DoNotOptimize(str.data());
 //         benchmark::ClobberMemory();
@@ -57,7 +57,7 @@
 //     char buff[510];
 //     FIXTURE_U16SAMPLE;
 //     for(auto _ : state) {
-//         (void)strf::to(buff)(strf::conv(u16sample));
+//         (void)strf::to(buff)(strf::transcode(u16sample));
 //         auto str = strf::to_string.reserve_calc()(buff);
 //         benchmark::DoNotOptimize(str.data());
 //         benchmark::ClobberMemory();
@@ -127,13 +127,13 @@ int main(int argc, char** argv)
     BM(, fmt::format("{} {} {}", 1.123e+5, pi, 1.11e-222));
     BM(, fmt::format("{:#f} {:+.8f} {:>30e}", 1.123e+5, pi, 1.11e-222));
 
-    BM(FIXTURE_U8SAMPLE, strf::to_u16string.reserve_calc() (strf::conv(u8sample)));
-    BM(FIXTURE_U8SAMPLE, strf::to_u16string.no_reserve()   (strf::conv(u8sample)));
-    BM(FIXTURE_U8SAMPLE, strf::to_u16string.reserve(510)   (strf::conv(u8sample)));
+    BM(FIXTURE_U8SAMPLE, strf::to_u16string.reserve_calc() (strf::transcode(u8sample)));
+    BM(FIXTURE_U8SAMPLE, strf::to_u16string.no_reserve()   (strf::transcode(u8sample)));
+    BM(FIXTURE_U8SAMPLE, strf::to_u16string.reserve(510)   (strf::transcode(u8sample)));
 
-    BM(FIXTURE_U16SAMPLE, strf::to_string.reserve_calc() (strf::conv(u16sample)));
-    BM(FIXTURE_U16SAMPLE, strf::to_string.no_reserve()   (strf::conv(u16sample)));
-    BM(FIXTURE_U16SAMPLE, strf::to_string.reserve(510)   (strf::conv(u16sample)));
+    BM(FIXTURE_U16SAMPLE, strf::to_string.reserve_calc() (strf::transcode(u16sample)));
+    BM(FIXTURE_U16SAMPLE, strf::to_string.no_reserve()   (strf::transcode(u16sample)));
+    BM(FIXTURE_U16SAMPLE, strf::to_string.reserve(510)   (strf::transcode(u16sample)));
 
     benchmark::Initialize(&argc, argv);
     benchmark::RunSpecifiedBenchmarks();

@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.11)
 add_executable(mean_cpu_times mean_cpu_times.cpp)
-target_link_libraries(mean_cpu_times strf::strf-static-lib)
+target_link_libraries(mean_cpu_times Strf::StrfStatic)
 set_target_properties(mean_cpu_times PROPERTIES CXX_STANDARD 20)
 configure_file(repeat_benchmarks.sh repeat_benchmarks.sh COPYONLY)

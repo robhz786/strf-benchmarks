@@ -38,7 +38,7 @@ foreach(
   add_executable(${x}-header-only  src/${x}.cpp)
   target_link_libraries(
     ${x}-header-only
-    strf::strf-header-only
+    Strf::StrfHeaderOnly
     fmt::fmt-header-only
     benchmark )
   set_target_properties(
@@ -46,7 +46,7 @@ foreach(
     PROPERTIES OUTPUT_NAME ${x}-header-only )
 
   add_executable(${x}-static-lib src/${x}.cpp)
-  target_link_libraries(${x}-static-lib strf::strf-static-lib fmt::fmt benchmark)
+  target_link_libraries(${x}-static-lib Strf::StrfStatic fmt::fmt benchmark)
   set_target_properties(${x}-static-lib PROPERTIES OUTPUT_NAME ${x}-static-lib)
 
 endforeach(x)
@@ -66,7 +66,7 @@ foreach(
   add_executable(${x}-header-only  src/${x}.cpp)
   target_link_libraries(
     ${x}-header-only
-    strf::strf-header-only
+    Strf::StrfHeaderOnly
     benchmark )
   set_target_properties(
     ${x}-header-only
@@ -74,7 +74,7 @@ foreach(
     ${x}-header-only )
 
   add_executable(${x}-static-lib src/${x}.cpp)
-  target_link_libraries(${x}-static-lib strf::strf-static-lib benchmark)
+  target_link_libraries(${x}-static-lib Strf::StrfStatic benchmark)
   set_target_properties(${x}-static-lib PROPERTIES OUTPUT_NAME ${x}-static-lib)
 
 endforeach(x)
